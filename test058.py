@@ -3,7 +3,7 @@ import sys
 import math
 from sympy import *
 
-#main_window
+#main window
 def main_window():
     root_1=tkinter.Tk()
     root_1.title(u"math")
@@ -481,7 +481,7 @@ def sub_window_8():
     btn.place(x=140,y=140)
 
     root_7.mainloop()
-      
+
 #連立方程式　　test065.py
 def sub_window_9():
     root_9=tkinter.Tk()

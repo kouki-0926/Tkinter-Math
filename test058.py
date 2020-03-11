@@ -3,7 +3,7 @@ import sys
 import math
 from sympy import *
 
-#main window
+#main_window
 def main_window():
     root_1=tkinter.Tk()
     root_1.title(u"math")

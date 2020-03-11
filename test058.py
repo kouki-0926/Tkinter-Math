@@ -3,6 +3,7 @@ import sys
 import math
 from sympy import *
 
+#main_window
 def main_window():
     root_1=tkinter.Tk()
     root_1.title(u"math")
@@ -36,7 +37,7 @@ def main_window():
     btn_a=tkinter.Button(text="mathを閉じる",command=root_1.destroy,width=20,height=3,bg="#ffa300")
     btn_a.place(x=450,y=150)
 
-    root_1.mainloop()#main Window
+    root_1.mainloop()
 
 def sub_window_1():
     root_2=tkinter.Toplevel()

@@ -38,11 +38,12 @@ def main_window():
     btn_a.place(x=450,y=150)
 
     root_1.mainloop()
-
+#微分   test038.py
 def sub_window_1():
     root_2=tkinter.Toplevel()
     root_2.title(u"微分")
-    root_2.geometry("2000x300")
+    root_2.geometry("1500x300")
+    root_2.resizable(False, False)
 
     def dx():
         x = Symbol('x')
@@ -92,13 +93,13 @@ def sub_window_1():
     lbl_2_2=tkinter.Label(root_2,text="導関数",font=50)
     lbl_2_2.place(x=-5,y=90)
 
-    root_2.mainloop()#微分   test038.py
-
+    root_2.mainloop()
+#積分　　test046.py
 def sub_window_2():
     root_10=tkinter.Toplevel()
     root_10.title(u"積分")
-    root_10.geometry("1950x280")
-
+    root_10.geometry("1500x280")
+    root_10.resizable(False, False)
 
     def integ():
         x = Symbol('x')
@@ -158,12 +159,13 @@ def sub_window_2():
     btn_2.place(x=580,y=230)
     lbl()
 
-    root_10.mainloop()#積分　　test046.py
-
+    root_10.mainloop()
+#因数分解　test064.py
 def sub_window_3():
     root_4=tkinter.Toplevel()
     root_4.title(u"因数分解")
     root_4.geometry("1000x300")
+    root_4.resizable(False, False)
 
     def fa():
         A=txt_4_1.get()
@@ -188,12 +190,13 @@ def sub_window_3():
     lbl_4_1=tkinter.Label(root_4,text="因数分解したい式を入力してください",font=50)
     lbl_4_1.place(x=300,y=20)
 
-    root_4.mainloop()#因数分解　test064.py
-
+    root_4.mainloop()
+#方程式　　test044.py
 def sub_window_4():
     root_9=tkinter.Toplevel()
     root_9.title(u"方程式")
     root_9.geometry("950x600")
+    root_9.resizable(False, False)
 
     scrollbar_frame = tkinter.Frame(root_9)
     scrollbar_frame.grid(padx=100, pady=100)
@@ -228,12 +231,13 @@ def sub_window_4():
     lbl_9_3=tkinter.Label(root_9,text="=0",font=40)
     lbl_9_3.place(x=880,y=50)
 
-    root_9.mainloop()#方程式　　test044.py
-
+    root_9.mainloop()
+#テーラー展開　　test043.py
 def sub_window_5():
     root_11=tkinter.Toplevel()
     root_11.title(u"テーラー展開")
     root_11.geometry("600x400")
+    root_11.resizable(False, False)
 
     def fx():
         a=txt_11_3.get()
@@ -313,12 +317,13 @@ def sub_window_5():
     txt_11_5.insert(0,15)
     txt_11_6.insert(0,1)
 
-    root_11.mainloop()#テーラー展開　　test043.py
-
+    root_11.mainloop()
+#階乗     test049.py
 def sub_window_6():
     root_12=tkinter.Toplevel()
     root_12.title(u"階乗")
     root_12.geometry("440x160")
+    root_12.resizable(False, False)
 
     def x():
         a=txt_1.get()
@@ -340,13 +345,14 @@ def sub_window_6():
     btn_2=tkinter.Button(root_12,width=35,text="階乗を閉じる",command=root_12.destroy)
     btn_2.place(x=100,y=120)
 
-    root_12.mainloop()#階乗     test049.py
-
+    root_12.mainloop()
+#連立方程式　test065.py
 def sub_window_7():
     def sub_window_7_1():
         root_7_1=tkinter.Toplevel()
         root_7_1.title(u"連立方程式")
         root_7_1.geometry("400x180")
+        root_7_1.resizable(False, False)
 
         def sub():
             a=txt_1.get()
@@ -373,6 +379,7 @@ def sub_window_7():
         root_7_2=tkinter.Tk()
         root_7_2.title(u"連立方程式")
         root_7_2.geometry(f"{width}x{height}")
+        root_7_2.resizable(False, False)
 
         def fa():
             formura=[]
@@ -414,12 +421,13 @@ def sub_window_7():
 
         root_7_2.mainloop()
 
-    sub_window_7_1()#連立方程式　test065.py
-
+    sub_window_7_1()
+#BMI    test030.py
 def sub_window_8():
     root_7=tkinter.Toplevel()
     root_7.title(u"BMI")
     root_7.geometry("300x330")
+    root_7.resizable(False, False)
 
     btn_6_1=tkinter.Button(root_7,text="BMIを閉じる",command=root_7.destroy)
     btn_6_1.place(x=120,y=300)
@@ -464,14 +472,15 @@ def sub_window_8():
     btn=tkinter.Button(root_7,text="計算",command=btn_click)
     btn.place(x=140,y=140)
 
-    root_7.mainloop()#BMI    test030.py
-
+    root_7.mainloop()    
+#連立方程式　　test065.py
 def sub_window_9():
-    x = Symbol('x')
-
     root_9=tkinter.Tk()
     root_9.title(u"極限")
     root_9.geometry("960x200")
+    root_9.resizable(False, False)
+
+    x = Symbol('x')
 
     def li():
         f = txt_1.get()

@@ -38,6 +38,7 @@ def main_window():
     btn_a.place(x=450,y=150)
 
     root_1.mainloop()
+
 #微分   test038.py
 def sub_window_1():
     root_2=tkinter.Toplevel()
@@ -94,6 +95,7 @@ def sub_window_1():
     lbl_2_2.place(x=-5,y=90)
 
     root_2.mainloop()
+
 #積分　　test046.py
 def sub_window_2():
     root_10=tkinter.Toplevel()
@@ -160,6 +162,7 @@ def sub_window_2():
     lbl()
 
     root_10.mainloop()
+
 #因数分解　test064.py
 def sub_window_3():
     root_4=tkinter.Toplevel()
@@ -191,6 +194,7 @@ def sub_window_3():
     lbl_4_1.place(x=300,y=20)
 
     root_4.mainloop()
+
 #方程式　　test044.py
 def sub_window_4():
     root_9=tkinter.Toplevel()
@@ -232,6 +236,7 @@ def sub_window_4():
     lbl_9_3.place(x=880,y=50)
 
     root_9.mainloop()
+
 #テーラー展開　　test043.py
 def sub_window_5():
     root_11=tkinter.Toplevel()
@@ -318,6 +323,7 @@ def sub_window_5():
     txt_11_6.insert(0,1)
 
     root_11.mainloop()
+
 #階乗     test049.py
 def sub_window_6():
     root_12=tkinter.Toplevel()
@@ -346,6 +352,7 @@ def sub_window_6():
     btn_2.place(x=100,y=120)
 
     root_12.mainloop()
+
 #連立方程式　test065.py
 def sub_window_7():
     def sub_window_7_1():
@@ -422,6 +429,7 @@ def sub_window_7():
         root_7_2.mainloop()
 
     sub_window_7_1()
+
 #BMI    test030.py
 def sub_window_8():
     root_7=tkinter.Toplevel()
@@ -472,7 +480,8 @@ def sub_window_8():
     btn=tkinter.Button(root_7,text="計算",command=btn_click)
     btn.place(x=140,y=140)
 
-    root_7.mainloop()    
+    root_7.mainloop()
+      
 #連立方程式　　test065.py
 def sub_window_9():
     root_9=tkinter.Tk()

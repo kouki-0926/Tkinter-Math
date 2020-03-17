@@ -482,7 +482,7 @@ def sub_window_8():
 
     root_7.mainloop()
 
-#連立方程式　　test065.py
+#極限　　test067.py
 def sub_window_9():
     root_9=tkinter.Tk()
     root_9.title(u"極限")

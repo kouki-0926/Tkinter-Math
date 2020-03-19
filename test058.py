@@ -8,35 +8,34 @@ from functools import partial
 def main_window():
     root_1=tkinter.Tk()
     root_1.title(u"math")
-    root_1.geometry("600x230")
+    root_1.geometry("600x290")
     root_1.resizable(False, False)
     #root_1.configure(bg='#000000')
 
-    btn_1=tkinter.Button(text="微分",command=sub_window_1,width=20,height=3)
+    btn_1=tkinter.Button(text="微分",command=sub_window_1,width=20,height=4)
     btn_1.place(x=0,y=30)
-    btn_2=tkinter.Button(text="積分",command=sub_window_2,width=20,height=3)
+    btn_2=tkinter.Button(text="積分",command=sub_window_2,width=20,height=4)
     btn_2.place(x=150,y=30)
-    btn_3=tkinter.Button(text="因数分解",command=sub_window_3,width=20,height=3)
+    btn_3=tkinter.Button(text="因数分解",command=sub_window_3,width=20,height=4)
     btn_3.place(x=300,y=30)
-    btn_4=tkinter.Button(text="方程式",command=sub_window_4,width=20,height=3)
+    btn_4=tkinter.Button(text="方程式",command=sub_window_4,width=20,height=4)
     btn_4.place(x=450,y=30)
-    btn_5=tkinter.Button(text="テーラー展開",command=sub_window_5,width=20,height=3)
-    btn_5.place(x=0,y=90)
-    btn_6=tkinter.Button(text="階乗",command=sub_window_6,width=20,height=3)
-    btn_6.place(x=150,y=90)
-    btn_7=tkinter.Button(text="連立方程式",command=sub_window_7,width=20,height=3)
-    btn_7.place(x=300,y=90)
-    btn_8=tkinter.Button(text="BMI",command=sub_window_8,width=20,height=3)
-    btn_8.place(x=450,y=90)
-    btn_9=tkinter.Button(text="極限",command=sub_window_9,width=20,height=3)
-    btn_9.place(x=0,y=150)
-    btn_10=tkinter.Button(text="行列",command=sub_window_10,width=20,height=3)
-    btn_10.place(x=150,y=150)
-    btn_11=tkinter.Button(text="",width=20,height=3)
-    btn_11.place(x=300,y=150)
-
-    btn_a=tkinter.Button(text="mathを閉じる",command=root_1.destroy,width=20,height=3,bg="#ffa300")
-    btn_a.place(x=450,y=150)
+    btn_5=tkinter.Button(text="テーラー展開",command=sub_window_5,width=20,height=4)
+    btn_5.place(x=0,y=105)
+    btn_6=tkinter.Button(text="階乗",command=sub_window_6,width=20,height=4)
+    btn_6.place(x=150,y=105)
+    btn_7=tkinter.Button(text="連立方程式",command=sub_window_7,width=20,height=4)
+    btn_7.place(x=300,y=105)
+    btn_8=tkinter.Button(text="BMI",command=sub_window_8,width=20,height=4)
+    btn_8.place(x=450,y=105)
+    btn_9=tkinter.Button(text="極限",command=sub_window_9,width=20,height=4)
+    btn_9.place(x=0,y=180)
+    btn_10=tkinter.Button(text="行列",command=sub_window_10,width=20,height=4)
+    btn_10.place(x=150,y=180)
+    btn_11=tkinter.Button(text="",width=20,height=4)
+    btn_11.place(x=300,y=180)
+    btn_d=tkinter.Button(text="mathを閉じる",command=root_1.destroy,width=20,height=4,bg="#ffa300")
+    btn_d.place(x=450,y=180)
 
     root_1.mainloop()
 
@@ -547,7 +546,6 @@ def sub_window_10():
                     m=m
                 elif m_1=="-":
                     m=-m
-
                 list.append(m)
             LIST.append(list)
         A=Matrix(LIST)
@@ -555,76 +553,62 @@ def sub_window_10():
         calculation(A,a,b,c)
 
     def calculation(A,a,b,c):
+        d=0
         if c==0:
             A=A
             D="A"
-            d=0
-            out(A,D,d,b)
 
         elif c==1:
             A=A**2
             D="A^2"
-            d=0
-            out(A,D,d,b)
 
         elif c==2:
             A=A.transpose()
             D="A^t"
-            d=0
-            out(A,D,d,a)
+            b=a
 
         elif c==3:
             A=A.inv()
             D="A^-1"
-            d=0
-            out(A,D,d,b)
 
         elif c==4:
             A=A.adjugate()
             D="A~"
-            d=0
-            out(A,D,d,b)
 
         elif c==5:
             A=A.det()
             D="det(A)"
             d=1
-            out(A,D,d,b)
 
         elif c==6:
             A=A.rank()
             D="rank(A)"
             d=1
-            out(A,D,d,b)
 
         elif c==7:
             A=A.trace()
             D="tr(A)"
             d=1
-            out(A,D,d,b)
 
         elif c==8:
             A=A.eigenvals()
             A=list(A)
             D="λ"
             d=1
-            out(A,D,d,b)
 
         elif c==9:
             A=A.diagonalize()
             A=list(A)
             A=A[0]
             D="P"
-            d=0
-            out(A,D,d,b)
 
         elif c==10:
             A=A.diagonalize()
             A=list(A)
             A=A[1]
             D="P^-1AP"
-            d=0
-            out(A,D,d,b)
+
+        out(A,D,d,b)
 
     def out(A,D,d,b):
         txt_10_5.delete(0,tkinter.END)

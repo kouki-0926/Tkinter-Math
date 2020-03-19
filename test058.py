@@ -525,7 +525,7 @@ def sub_window_9():
 
     root_9.mainloop()
 
-#行列　　　test074.py
+#行列　　test074.py
 def sub_window_10():
     root_10=tkinter.Toplevel()
     root_10.title(u"行列")
@@ -568,15 +568,15 @@ def sub_window_10():
             out(A,D,d,b)
 
         elif c==2:
+            A=A.transpose()
+            D="A^t"
+            d=0
+            out(A,D,d,a)
+
+        elif c==3:
             A=A.inv()
             D="A^-1"
             d=0
-            out(A,D,d,b)
-
-        elif c==3:
-            A=A.det()
-            D="det(A)"
-            d=1
             out(A,D,d,b)
 
         elif c==4:
@@ -586,25 +586,31 @@ def sub_window_10():
             out(A,D,d,b)
 
         elif c==5:
+            A=A.det()
+            D="det(A)"
+            d=1
+            out(A,D,d,b)
+
+        elif c==6:
+            A=A.rank()
+            D="rank(A)"
+            d=1
+            out(A,D,d,b)
+
+        elif c==7:
             A=A.trace()
             D="tr(A)"
             d=1
             out(A,D,d,b)
 
-        elif c==6:
-            A=A.transpose()
-            D="A^t"
-            d=0
-            out(A,D,d,a)
-
-        elif c==7:
+        elif c==8:
             A=A.eigenvals()
             A=list(A)
             D="λ"
             d=1
             out(A,D,d,b)
 
-        elif c==8:
+        elif c==9:
             A=A.diagonalize()
             A=list(A)
             A=A[0]
@@ -612,18 +618,12 @@ def sub_window_10():
             d=0
             out(A,D,d,b)
 
-        elif c==9:
+        elif c==10:
             A=A.diagonalize()
             A=list(A)
             A=A[1]
             D="P^-1AP"
             d=0
-            out(A,D,d,b)
-
-        elif c==10:
-            A=A.rank()
-            D="rank(A)"
-            d=1
             out(A,D,d,b)
 
     def out(A,D,d,b):
@@ -645,25 +645,37 @@ def sub_window_10():
     btn_10_2.place(x=600,y=20)
     btn_10_3=tkinter.Button(root_10,text="２乗",command=partial(get,1),width=30,font=("",15))
     btn_10_3.place(x=600,y=60)
-    btn_10_4=tkinter.Button(root_10,text="逆行列",command=partial(get,2),width=30,font=("",15))
+    btn_10_4=tkinter.Button(root_10,text="転置",command=partial(get,2),width=30,font=("",15))
     btn_10_4.place(x=600,y=100)
-    btn_10_5=tkinter.Button(root_10,text="行列式",command=partial(get,3),width=30,font=("",15))
+    btn_10_5=tkinter.Button(root_10,text="逆行列",command=partial(get,3),width=30,font=("",15))
     btn_10_5.place(x=600,y=140)
     btn_10_6=tkinter.Button(root_10,text="余因子行列",command=partial(get,4),width=30,font=("",15))
     btn_10_6.place(x=600,y=180)
-    btn_10_7=tkinter.Button(root_10,text="トレース",command=partial(get,5),width=30,font=("",15))
+    btn_10_7=tkinter.Button(root_10,text="行列式",command=partial(get,5),width=30,font=("",15))
     btn_10_7.place(x=600,y=220)
-    btn_10_8=tkinter.Button(root_10,text="転置",command=partial(get,6),width=30,font=("",15))
+    btn_10_8=tkinter.Button(root_10,text="階数",command=partial(get,6),width=30,font=("",15))
     btn_10_8.place(x=600,y=260)
-    btn_10_9=tkinter.Button(root_10,text="固有値",command=partial(get,7),width=30,font=("",15))
+    btn_10_9=tkinter.Button(root_10,text="トレース",command=partial(get,7),width=30,font=("",15))
     btn_10_9.place(x=600,y=300)
-    btn_10_10=tkinter.Button(root_10,text="対角化行列",command=partial(get,8),width=30,font=("",15))
+    btn_10_10=tkinter.Button(root_10,text="固有値",command=partial(get,8),width=30,font=("",15))
     btn_10_10.place(x=600,y=340)
-    btn_10_11=tkinter.Button(root_10,text="対角行列",command=partial(get,9),width=30,font=("",15))
+    btn_10_11=tkinter.Button(root_10,text="対角化行列",command=partial(get,9),width=30,font=("",15))
     btn_10_11.place(x=600,y=380)
-    btn_10_12=tkinter.Button(root_10,text="階数",command=partial(get,10),width=30,font=("",15))
+    btn_10_12=tkinter.Button(root_10,text="対角行列",command=partial(get,10),width=30,font=("",15))
     btn_10_12.place(x=600,y=420)
 
+    lbl_10_1=tkinter.Label(root_10,text="A:",font=("",20))
+    lbl_10_1.place(x=0,y=95)
+    lbl_10_2=tkinter.Label(root_10,text="行",font=("",20))
+    lbl_10_2.place(x=65,y=95)
+    lbl_10_3=tkinter.Label(root_10,text="列",font=("",20))
+    lbl_10_3.place(x=135,y=95)
+    lbl_10_4=tkinter.Label(root_10,text="↓",font=("",38))
+    lbl_10_4.place(x=380,y=220)
+    lbl_10_5=tkinter.Label(root_10,text="A=",font=("",40))
+    lbl_10_5.place(x=200,y=80)
+    lbl_10_6=tkinter.Label(root_10,text="=",font=("",40))
+    lbl_10_6.place(x=230,y=350)
 
     txt_10_1=tkinter.Text(root_10,width=20,height=7,font=("",20))
     txt_10_1.place(x=270,y=20)
@@ -675,19 +687,6 @@ def sub_window_10():
     txt_10_4.place(x=100,y=95)
     txt_10_5=tkinter.Entry(root_10,width=8,font=("",40))
     txt_10_5.place(x=10,y=350)
-
-    lbl_10_1=tkinter.Label(root_10,text="A:",font=("",20))
-    lbl_10_1.place(x=0,y=95)
-    lbl_10_2=tkinter.Label(root_10,text="行",font=("",20))
-    lbl_10_2.place(x=65,y=95)
-    lbl_10_3=tkinter.Label(root_10,text="列",font=("",20))
-    lbl_10_3.place(x=135,y=95)
-    lbl_10_4=tkinter.Label(root_10,text="A=",font=("",40))
-    lbl_10_4.place(x=200,y=80)
-    lbl_10_5=tkinter.Label(root_10,text="↓",font=("",38))
-    lbl_10_5.place(x=380,y=220)
-    lbl_10_6=tkinter.Label(root_10,text="=",font=("",40))
-    lbl_10_6.place(x=230,y=350)
 
     txt_10_3.insert(0,"2")
     txt_10_4.insert(0,"2")

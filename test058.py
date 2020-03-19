@@ -29,7 +29,7 @@ def main_window():
     btn_8.place(x=450,y=90)
     btn_9=tkinter.Button(text="極限",command=sub_window_9,width=20,height=3)
     btn_9.place(x=0,y=150)
-    btn_10=tkinter.Button(text="",width=20,height=3)
+    btn_10=tkinter.Button(text="行列",command=sub_window_10,width=20,height=3)
     btn_10.place(x=150,y=150)
     btn_11=tkinter.Button(text="",width=20,height=3)
     btn_11.place(x=300,y=150)
@@ -383,7 +383,7 @@ def sub_window_7():
     def sub_window_7_2(a):
         width=1000
         height=a*40+230
-        root_7_2=tkinter.Tk()
+        root_7_2=tkinter.Toplevel()
         root_7_2.title(u"連立方程式")
         root_7_2.geometry(f"{width}x{height}")
         root_7_2.resizable(False, False)
@@ -484,7 +484,7 @@ def sub_window_8():
 
 #極限　　test067.py
 def sub_window_9():
-    root_9=tkinter.Tk()
+    root_9=tkinter.Toplevel()
     root_9.title(u"極限")
     root_9.geometry("960x200")
     root_9.resizable(False, False)
@@ -523,5 +523,200 @@ def sub_window_9():
     txt_3.insert(0,0)
 
     root_9.mainloop()
+
+#行列　　　test073.py
+def sub_window_10():
+    root_10=tkinter.Toplevel()
+    root_10.title(u"行列")
+    root_10.geometry("1000x500")
+    root_10.resizable(False, False)
+
+    def zero():
+        c=0
+        get(0)
+
+    def one():
+        c=1
+        get(1)
+
+    def two():
+        c=2
+        get(2)
+
+    def three():
+        c=3
+        get(3)
+
+    def four():
+        c=4
+        get(4)
+
+    def five():
+        c=5
+        get(5)
+
+    def six():
+        c=6
+        get(6)
+
+    def seven():
+        c=7
+        get(7)
+
+    def eight():
+        c=8
+        get(8)
+
+    def nine():
+        c=9
+        get(9)
+
+
+    def get(c):
+        a=int(txt_10_3.get())
+        b=int(txt_10_4.get())
+
+        LIST=[]
+        for i in range(1,b+1,1):
+            list=[]
+            for j in range(0,a,1):
+                m_1=txt_10_1.get(f"{i}.{3*j}")
+                m_2=txt_10_1.get(f"{i}.{3*j+1}")
+                m=int(m_2)
+                if m_1==" ":
+                    m=m
+                elif m_1=="-":
+                    m=-m
+
+                list.append(m)
+            LIST.append(list)
+        A=Matrix(LIST)
+
+        calculation(A,a,b,c)
+
+    def calculation(A,a,b,c):
+        if c==0:
+            A=A
+            D="A"
+            out(A,b,D)
+
+        elif c==1:
+            A=A**2
+            D="A^2"
+            out(A,b,D)
+
+        elif c==2:
+            A=A.inv()
+            D="A^-1"
+            out(A,b,D)
+
+        elif c==3:
+            A=A.det()
+            D="det(A)"
+            out_2(A,D)
+
+        elif c==4:
+            A=A.adjugate()
+            D="A~"
+            out(A,b,D)
+
+        elif c==5:
+            A=A.trace()
+            D="tr(A)"
+            out_2(A,D)
+
+        elif c==6:
+            A=A.transpose()
+            D="A^t"
+            out(A,a,D)
+
+        elif c==7:
+            A=A.eigenvals()
+            A=list(A)
+            D="λ"
+            out_2(A,D)
+
+        elif c==8:
+            A=A.diagonalize()
+            A=list(A)
+            A=A[0]
+            D="P"
+            out(A,b,D)
+
+        elif c==9:
+            A=A.diagonalize()
+            A=list(A)
+            A=A[1]
+            D="P^-1AP"
+            out(A,b,D)
+
+    def out(A,b,D):
+        txt_10_2.delete("0.end",tkinter.END)
+        txt_10_5.delete(0,tkinter.END)
+        for k in range(0,b,1):
+            B=str(A.row(k))
+            C=B.replace("Matrix","").replace("([[","[").replace("]])","]\n")
+            txt_10_2.insert(f"{k+1}.{0}",C)
+        txt_10_5.insert(0,D)
+
+    def out_2(A,D):
+        txt_10_2.delete("0.end",tkinter.END)
+        txt_10_5.delete(0,tkinter.END)
+        txt_10_2.insert("1.0",A)
+        txt_10_5.insert(0,D)
+
+
+    btn_10_1=tkinter.Button(root_10,text="行列を閉じる",width=30,command=root_10.destroy,font=("",15),bg="#ffa300")
+    btn_10_1.place(x=600,y=440)
+    btn_10_2=tkinter.Button(root_10,text="A",command=zero,width=30,font=("",15))
+    btn_10_2.place(x=600,y=20)
+    btn_10_3=tkinter.Button(root_10,text="２乗",command=one,width=30,font=("",15))
+    btn_10_3.place(x=600,y=60)
+    btn_10_4=tkinter.Button(root_10,text="逆行列",command=two,width=30,font=("",15))
+    btn_10_4.place(x=600,y=100)
+    btn_10_5=tkinter.Button(root_10,text="行列式",command=three,width=30,font=("",15))
+    btn_10_5.place(x=600,y=140)
+    btn_10_6=tkinter.Button(root_10,text="余因子行列",command=four,width=30,font=("",15))
+    btn_10_6.place(x=600,y=180)
+    btn_10_7=tkinter.Button(root_10,text="トレース",command=five,width=30,font=("",15))
+    btn_10_7.place(x=600,y=220)
+    btn_10_8=tkinter.Button(root_10,text="転置",command=six,width=30,font=("",15))
+    btn_10_8.place(x=600,y=260)
+    btn_10_9=tkinter.Button(root_10,text="固有値",command=seven,width=30,font=("",15))
+    btn_10_9.place(x=600,y=300)
+    btn_10_10=tkinter.Button(root_10,text="対角化行列",command=eight,width=30,font=("",15))
+    btn_10_10.place(x=600,y=340)
+    btn_10_11=tkinter.Button(root_10,text="対角行列",command=nine,width=30,font=("",15))
+    btn_10_11.place(x=600,y=380)
+
+    txt_10_1=tkinter.Text(root_10,width=20,height=7,font=("",20))
+    txt_10_1.place(x=270,y=20)
+    txt_10_2=tkinter.Text(root_10,width=20,height=7,font=("",20))
+    txt_10_2.place(x=270,y=280)
+    txt_10_3=tkinter.Entry(root_10,width=2,font=("",20))
+    txt_10_3.place(x=30,y=95)
+    txt_10_4=tkinter.Entry(root_10,width=2,font=("",20))
+    txt_10_4.place(x=100,y=95)
+    txt_10_5=tkinter.Entry(root_10,width=8,font=("",40))
+    txt_10_5.place(x=10,y=350)
+
+    lbl_10_1=tkinter.Label(root_10,text="A:",font=("",20))
+    lbl_10_1.place(x=0,y=95)
+    lbl_10_2=tkinter.Label(root_10,text="行",font=("",20))
+    lbl_10_2.place(x=65,y=95)
+    lbl_10_3=tkinter.Label(root_10,text="列",font=("",20))
+    lbl_10_3.place(x=135,y=95)
+    lbl_10_4=tkinter.Label(root_10,text="A=",font=("",40))
+    lbl_10_4.place(x=200,y=80)
+    lbl_10_5=tkinter.Label(root_10,text="↓",font=("",38))
+    lbl_10_5.place(x=380,y=220)
+    lbl_10_6=tkinter.Label(root_10,text="=",font=("",40))
+    lbl_10_6.place(x=230,y=350)
+
+    txt_10_3.insert(0,"2")
+    txt_10_4.insert(0,"2")
+
+    root_10.mainloop()
+
 
 main_window()

@@ -46,7 +46,7 @@ def sub_window_1():
         formula=txt_1_1.get()
         a=txt_1_3.get()
 
-        anser=derivative(formula,a)
+        anser=derivative.derivative(formula,a)
         txt_1_2.delete(0,tkinter.END)
         txt_1_2.insert(0,anser)
 
@@ -55,22 +55,20 @@ def sub_window_1():
     root_1.geometry("1500x300")
     root_1.resizable(False, False)
 
-    btn_1_1=tkinter.Button(root_1,text="計算",width=20,command=cal_1,font=10)
-    btn_1_1.place(x=500,y=150)
-    btn_1_2=tkinter.Button(root_1,text="微分を閉じる",width=20,command=root_1.destroy,font=10)
-    btn_1_2.place(x=500,y=200)
+    btn_1_1=tkinter.Button(root_1,text="計算",width=20,command=cal_1,font=("",20))
+    btn_1_1.place(x=500,y=140)
 
-    txt_1_1=tkinter.Entry(root_1,width=70,font=("",30))
-    txt_1_1.place(x=70,y=50)
-    txt_1_2=tkinter.Entry(root_1,width=70,font=("",30))
-    txt_1_2.place(x=70,y=90)
+    txt_1_1=tkinter.Entry(root_1,width=73,font=("",30))
+    txt_1_1.place(x=20,y=50)
+    txt_1_2=tkinter.Entry(root_1,width=73,font=("",30))
+    txt_1_2.place(x=20,y=220)
     txt_1_3=tkinter.Entry(root_1,width=2,font=("",30))
-    txt_1_3.place(x=1400,y=250)
+    txt_1_3.place(x=1000,y=140)
 
-    lbl_1_1=tkinter.Label(root_1,text="関数",font=50)
-    lbl_1_1.place(x=20,y=50)
-    lbl_1_2=tkinter.Label(root_1,text="導関数",font=50)
-    lbl_1_2.place(x=-5,y=90)
+    lbl_1_1=tkinter.Label(root_1,text="関数を入力してください",font=("",20))
+    lbl_1_1.place(x=20,y=15)
+    lbl_1_2=tkinter.Label(root_1,text="導関数",font=("",20))
+    lbl_1_2.place(x=20,y=185)
 
     txt_1_3.insert(0,"x")
 
@@ -78,70 +76,47 @@ def sub_window_1():
 
 #積分　　test046.py
 def sub_window_2():
-    root_10=tkinter.Toplevel()
-    root_10.title(u"積分")
-    root_10.geometry("1500x280")
-    root_10.resizable(False, False)
+    def cal_2():
+        formula=txt_2_1.get()
+        a=txt_2_2.get()
+        b=txt_2_3.get()
+        c=int(txt_2_5.get())
 
-    def integ():
-        x = Symbol('x')
+        anser=integral.integral(formula,a,b,c)
+        txt_2_4.delete(0,tkinter.END)
+        txt_2_4.insert(0,anser)
 
-        f=txt_1.get()
-        a=txt_2.get()
-        b=txt_3.get()
-        c=txt_5.get()
-        c=int(c)
+    root_2=tkinter.Toplevel()
+    root_2.title(u"積分")
+    root_2.geometry("1500x280")
+    root_2.resizable(False, False)
 
-        g=integrate(f)
-        A=g.subs(x,a)-g.subs(x,b)
+    btn_2_1=tkinter.Button(root_2,text="計算",width=20,command=cal_2,font=("",20))
+    btn_2_1.place(x=580,y=200)
 
-        txt_4.delete(0,tkinter.END)
-        lbl()
+    txt_2_1=tkinter.Entry(root_2,width=20,font=("",40))
+    txt_2_1.place(x=80,y=90)
+    txt_2_2=tkinter.Entry(root_2,width=10)
+    txt_2_2.place(x=30,y=50)
+    txt_2_3=tkinter.Entry(root_2,width=10)
+    txt_2_3.place(x=30,y=170)
+    txt_2_4=tkinter.Entry(root_2,width=25,font=("",40))
+    txt_2_4.place(x=800,y=90)
+    txt_2_5=tkinter.Entry(root_2,width=1,font=("",30))
+    txt_2_5.place(x=1400,y=10)
 
-        if  c==0:
-            txt_4.insert(0,A)
+    lbl_2_1=tkinter.Label(root_2,text="∫",font=("",70))
+    lbl_2_1.place(x=-20,y=70)
+    lbl_2_2=tkinter.Label(root_2,text="dx =",font=("",60))
+    lbl_2_2.place(x=620,y=70)
+    lbl_2_3=tkinter.Label(root_2,text="数値を出力するときは１を入力")
+    lbl_2_3.place(x=1220,y=10)
+    lbl_2_4=tkinter.Label(root_2,text="不定積分を出力するときは2を入力")
+    lbl_2_4.place(x=1220,y=30)
 
-        elif c==1:
-            txt_4.insert(0,A.evalf())
+    txt_2_5.insert(0,0)
 
-            if A!=A.evalf():
-                lbl_2=tkinter.Label(text="dx≒",font=("",60))
-                lbl_2.place(x=620,y=70)
-
-        elif c==2:
-            g=str(g)
-            txt_4.insert(0,g.replace("**","A").replace("*","").replace("A","^"))
-
-
-    txt_1=tkinter.Entry(root_10,width=20,font=("",40))
-    txt_1.place(x=80,y=90)
-    txt_2=tkinter.Entry(root_10,width=10)
-    txt_2.place(x=30,y=50)
-    txt_3=tkinter.Entry(root_10,width=10)
-    txt_3.place(x=30,y=170)
-    txt_4=tkinter.Entry(root_10,width=25,font=("",40))
-    txt_4.place(x=800,y=90)
-    txt_5=tkinter.Entry(root_10,width=1,font=("",30))
-    txt_5.place(x=1400,y=10)
-    txt_5.insert(0,0)
-
-    def lbl():
-         lbl_1=tkinter.Label(root_10,text="∫",font=("",70))
-         lbl_1.place(x=-20,y=70)
-         lbl_2=tkinter.Label(root_10,text="dx =",font=("",60))
-         lbl_2.place(x=620,y=70)
-         lbl_3=tkinter.Label(root_10,text="数値を出力するときは１を入力")
-         lbl_3.place(x=1220,y=10)
-         lbl_4=tkinter.Label(root_10,text="不定積分を出力するときは2を入力")
-         lbl_4.place(x=1220,y=30)
-
-    btn_1=tkinter.Button(root_10,text="計算",command=integ,width=30)
-    btn_1.place(x=580,y=200)
-    btn_2=tkinter.Button(root_10,text="積分を閉じる",command=root_10.destroy,width=30)
-    btn_2.place(x=580,y=230)
-    lbl()
-
-    root_10.mainloop()
+    root_2.mainloop()
 
 #因数分解　test064.py
 def sub_window_3():

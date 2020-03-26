@@ -1,4 +1,4 @@
-# MATH    ver. 1.2
+# MATH     ver.1.2
 
 ## 利用方法
 

@@ -1,9 +1,6 @@
 import tkinter
 from functools import partial
 from calculation import *
-
-#import sys
-#import math
 from sympy import *
 
 #main_window
@@ -278,7 +275,7 @@ def sub_window_7():
         root_7_1.resizable(False, False)
 
         def sub():
-            a=txt_6_1.get()
+            a=txt_7_1.get()
             a=int(a)
             root_7_1.destroy()
             sub_window_7_2(a)
@@ -442,15 +439,9 @@ def sub_window_9():
 
 #行列　　test074.py
 def sub_window_10():
-    root_10=tkinter.Toplevel()
-    root_10.title(u"行列")
-    root_10.geometry("1000x500")
-    root_10.resizable(False, False)
-
-    def get(c):
+    def calc_10(c):
         a=int(txt_10_3.get())
         b=int(txt_10_4.get())
-
         LIST=[]
         for i in range(1,b+1,1):
             list=[]
@@ -466,102 +457,48 @@ def sub_window_10():
             LIST.append(list)
         A=Matrix(LIST)
 
-        calculation(A,a,b,c)
+        anser=matrix.calculation(A,a,b,c)
 
-    def calculation(A,a,b,c):
-        d=0
-        if c==0:
-            A=A
-            D="A"
-
-        elif c==1:
-            A=A**2
-            D="A^2"
-
-        elif c==2:
-            A=A.transpose()
-            D="A^t"
-            b=a
-
-        elif c==3:
-            A=A.inv()
-            D="A^-1"
-
-        elif c==4:
-            A=A.adjugate()
-            D="A~"
-
-        elif c==5:
-            A=A.det()
-            D="det(A)"
-            d=1
-
-        elif c==6:
-            A=A.rank()
-            D="rank(A)"
-            d=1
-
-        elif c==7:
-            A=A.trace()
-            D="tr(A)"
-            d=1
-
-        elif c==8:
-            A=A.eigenvals()
-            A=list(A)
-            D="λ"
-            d=1
-
-        elif c==9:
-            A=A.diagonalize()
-            A=list(A)
-            A=A[0]
-            D="P"
-
-        elif c==10:
-            A=A.diagonalize()
-            A=list(A)
-            A=A[1]
-            D="P^-1AP"
-
-        out(A,D,d,b)
-
-    def out(A,D,d,b):
         txt_10_5.delete(0,tkinter.END)
-        txt_10_5.insert(0,D)
+        txt_10_5.insert(0,anser[1])
         txt_10_2.delete("0.end",tkinter.END)
-        if d==0:
-            for k in range(0,b,1):
-                B=str(A.row(k))
+        if anser[2]==0:
+            for k in range(0,anser[3],1):
+                B=str(anser[0].row(k))
                 C=B.replace("Matrix","").replace("([[","[").replace("]])","]\n")
                 txt_10_2.insert(f"{k+1}.{0}",C)
-        elif d==1:
-            txt_10_2.insert("1.0",A)
+        elif anser[2]==1:
+            txt_10_2.insert("1.0",anser[0])
 
+
+    root_10=tkinter.Toplevel()
+    root_10.title(u"行列")
+    root_10.geometry("1000x500")
+    root_10.resizable(False, False)
 
     btn_10_1=tkinter.Button(root_10,text="行列を閉じる",width=30,command=root_10.destroy,font=("",15),bg="#ffa300")
     btn_10_1.place(x=600,y=460)
-    btn_10_2=tkinter.Button(root_10,text="A",command=partial(get,0),width=30,font=("",15))
+    btn_10_2=tkinter.Button(root_10,text="A",command=partial(calc_10,0),width=30,font=("",15))
     btn_10_2.place(x=600,y=20)
-    btn_10_3=tkinter.Button(root_10,text="２乗",command=partial(get,1),width=30,font=("",15))
+    btn_10_3=tkinter.Button(root_10,text="２乗",command=partial(calc_10,1),width=30,font=("",15))
     btn_10_3.place(x=600,y=60)
-    btn_10_4=tkinter.Button(root_10,text="転置",command=partial(get,2),width=30,font=("",15))
+    btn_10_4=tkinter.Button(root_10,text="転置",command=partial(calc_10,2),width=30,font=("",15))
     btn_10_4.place(x=600,y=100)
-    btn_10_5=tkinter.Button(root_10,text="逆行列",command=partial(get,3),width=30,font=("",15))
+    btn_10_5=tkinter.Button(root_10,text="逆行列",command=partial(calc_10,3),width=30,font=("",15))
     btn_10_5.place(x=600,y=140)
-    btn_10_6=tkinter.Button(root_10,text="余因子行列",command=partial(get,4),width=30,font=("",15))
+    btn_10_6=tkinter.Button(root_10,text="余因子行列",command=partial(calc_10,4),width=30,font=("",15))
     btn_10_6.place(x=600,y=180)
-    btn_10_7=tkinter.Button(root_10,text="行列式",command=partial(get,5),width=30,font=("",15))
+    btn_10_7=tkinter.Button(root_10,text="行列式",command=partial(calc_10,5),width=30,font=("",15))
     btn_10_7.place(x=600,y=220)
-    btn_10_8=tkinter.Button(root_10,text="階数",command=partial(get,6),width=30,font=("",15))
+    btn_10_8=tkinter.Button(root_10,text="階数",command=partial(calc_10,6),width=30,font=("",15))
     btn_10_8.place(x=600,y=260)
-    btn_10_9=tkinter.Button(root_10,text="トレース",command=partial(get,7),width=30,font=("",15))
+    btn_10_9=tkinter.Button(root_10,text="トレース",command=partial(calc_10,7),width=30,font=("",15))
     btn_10_9.place(x=600,y=300)
-    btn_10_10=tkinter.Button(root_10,text="固有値",command=partial(get,8),width=30,font=("",15))
+    btn_10_10=tkinter.Button(root_10,text="固有値",command=partial(calc_10,8),width=30,font=("",15))
     btn_10_10.place(x=600,y=340)
-    btn_10_11=tkinter.Button(root_10,text="対角化行列",command=partial(get,9),width=30,font=("",15))
+    btn_10_11=tkinter.Button(root_10,text="対角化行列",command=partial(calc_10,9),width=30,font=("",15))
     btn_10_11.place(x=600,y=380)
-    btn_10_12=tkinter.Button(root_10,text="対角行列",command=partial(get,10),width=30,font=("",15))
+    btn_10_12=tkinter.Button(root_10,text="対角行列",command=partial(calc_10,10),width=30,font=("",15))
     btn_10_12.place(x=600,y=420)
 
     lbl_10_1=tkinter.Label(root_10,text="A:",font=("",20))

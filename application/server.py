@@ -4,7 +4,7 @@ from calculation import *
 
 #import sys
 #import math
-#from sympy import *
+from sympy import *
 
 #main_window
 def main_window():
@@ -42,7 +42,7 @@ def main_window():
 
 #微分   test038.py
 def sub_window_1():
-    def cal_1():
+    def calc_1():
         formula=txt_1_1.get()
         a=txt_1_3.get()
 
@@ -55,7 +55,7 @@ def sub_window_1():
     root_1.geometry("1500x300")
     root_1.resizable(False, False)
 
-    btn_1_1=tkinter.Button(root_1,text="計算",width=20,command=cal_1,font=("",20))
+    btn_1_1=tkinter.Button(root_1,text="計算",width=20,command=calc_1,font=("",20))
     btn_1_1.place(x=500,y=140)
 
     txt_1_1=tkinter.Entry(root_1,width=73,font=("",30))
@@ -76,7 +76,7 @@ def sub_window_1():
 
 #積分　　test046.py
 def sub_window_2():
-    def cal_2():
+    def calc_2():
         formula=txt_2_1.get()
         a=txt_2_2.get()
         b=txt_2_3.get()
@@ -91,7 +91,7 @@ def sub_window_2():
     root_2.geometry("1500x280")
     root_2.resizable(False, False)
 
-    btn_2_1=tkinter.Button(root_2,text="計算",width=20,command=cal_2,font=("",20))
+    btn_2_1=tkinter.Button(root_2,text="計算",width=20,command=calc_2,font=("",20))
     btn_2_1.place(x=580,y=200)
 
     txt_2_1=tkinter.Entry(root_2,width=20,font=("",40))
@@ -120,35 +120,32 @@ def sub_window_2():
 
 #因数分解　test064.py
 def sub_window_3():
-    root_4=tkinter.Toplevel()
-    root_4.title(u"因数分解")
-    root_4.geometry("1000x300")
-    root_4.resizable(False, False)
+    def calc_3():
+        formula=txt_3_1.get()
 
-    def fa():
-        A=txt_4_1.get()
-        B=factor(A)
+        anser=factorization.factorization(formula)
+        txt_3_2.delete(0,tkinter.END)
+        txt_3_2.insert(0,anser)
 
-        B=str(B)
-        B=B.replace("**","C").replace("*","").replace("C","^")
+    root_3=tkinter.Toplevel()
+    root_3.title(u"因数分解")
+    root_3.geometry("1000x300")
+    root_3.resizable(False, False)
 
-        txt_4_2.delete(0,tkinter.END)
-        txt_4_2.insert(0,B)
+    btn_3_1=tkinter.Button(root_3,text="計算",command=calc_3,width=20,height=3)
+    btn_3_1.place(x=400,y=110)
+    btn_3_2=tkinter.Button(root_3,text="因数分解を閉じる",command=root_3.destroy,width=20,height=2,bg="#ffa300")
+    btn_3_2.place(x=400,y=240)
 
-    btn_4_1=tkinter.Button(root_4,text="計算",command=fa,width=20,height=3)
-    btn_4_1.place(x=400,y=110)
-    btn_4_2=tkinter.Button(root_4,text="因数分解を閉じる",command=root_4.destroy,width=20)
-    btn_4_2.place(x=400,y=250)
+    txt_3_1=tkinter.Entry(root_3,width=40,font=("",30))
+    txt_3_1.place(x=70,y=50)
+    txt_3_2=tkinter.Entry(root_3,width=40,font=("",30))
+    txt_3_2.place(x=70,y=180)
 
-    txt_4_1=tkinter.Entry(root_4,width=40,font=("",30))
-    txt_4_1.place(x=70,y=50)
-    txt_4_2=tkinter.Entry(root_4,width=40,font=("",30))
-    txt_4_2.place(x=70,y=180)
+    lbl_3_1=tkinter.Label(root_3,text="因数分解したい式を入力してください",font=("",15))
+    lbl_3_1.place(x=330,y=20)
 
-    lbl_4_1=tkinter.Label(root_4,text="因数分解したい式を入力してください",font=50)
-    lbl_4_1.place(x=300,y=20)
-
-    root_4.mainloop()
+    root_3.mainloop()
 
 #方程式　　test044.py
 def sub_window_4():

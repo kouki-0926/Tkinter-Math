@@ -1,12 +1,12 @@
-# MATH  v1.1
+# MATH    ver. 1.2
 
 ## 利用方法
 
-### 1.  下の[URL](https://github.com/kouki7910/math/archive/v1.1.zip)からコードをダウンロード、展開する
-        https://github.com/kouki7910/math/archive/v1.1.zip
+### 1.  下の[URL](https://github.com/kouki7910/math/archive/v1.2.zip)からコードをダウンロード、展開する
+        https://github.com/kouki7910/math/archive/v1.2.zip
 
 ### 2. コマンドプロンプトを開き、applicationフォルダに移動する
-        cd Downloads\math-1.1\math-1.1\application
+        cd Downloads\math-1.2\math-1.2\application
 
 ### 3. pipenvをインストールする
         pip install pipenv

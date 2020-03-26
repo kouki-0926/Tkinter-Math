@@ -241,32 +241,33 @@ def sub_window_5():
 
 #階乗     test049.py
 def sub_window_6():
-    root_12=tkinter.Toplevel()
-    root_12.title(u"階乗")
-    root_12.geometry("440x160")
-    root_12.resizable(False, False)
+    def calc_6():
+        formula=int(txt_6_1.get())
 
-    def x():
-        a=txt_1.get()
-        b=math.factorial(int(a))
-        txt_2.delete(0,tkinter.END)
-        txt_2.insert(0,str(b))
+        anser=Factorial.Factorial(formula)
 
+        txt_6_2.delete(0,tkinter.END)
+        txt_6_2.insert(0,anser)
 
-    txt_1=tkinter.Entry(root_12,width=3,font=("",30))
-    txt_1.place(x=20,y=20)
-    txt_2=tkinter.Entry(root_12,width=13,font=("",30))
-    txt_2.place(x=150,y=20)
+    root_6=tkinter.Toplevel()
+    root_6.title(u"階乗")
+    root_6.geometry("440x160")
+    root_6.resizable(False, False)
 
-    lbl_1=tkinter.Label(root_12,text="!  =",font=("",30))
-    lbl_1.place(x=90,y=20)
+    txt_6_1=tkinter.Entry(root_6,width=3,font=("",30))
+    txt_6_1.place(x=20,y=20)
+    txt_6_2=tkinter.Entry(root_6,width=13,font=("",30))
+    txt_6_2.place(x=150,y=20)
 
-    btn_1=tkinter.Button(root_12,width=35,height=2,text="計算",command=x)
-    btn_1.place(x=100,y=70)
-    btn_2=tkinter.Button(root_12,width=35,text="階乗を閉じる",command=root_12.destroy)
-    btn_2.place(x=100,y=120)
+    lbl_6_1=tkinter.Label(root_6,text="!  =",font=("",30))
+    lbl_6_1.place(x=90,y=20)
 
-    root_12.mainloop()
+    btn_6_1=tkinter.Button(root_6,width=35,height=2,text="計算",command=calc_6)
+    btn_6_1.place(x=100,y=70)
+    btn_6_2=tkinter.Button(root_6,width=35,height=1,text="階乗を閉じる",command=root_6.destroy,bg="#ffa300")
+    btn_6_2.place(x=100,y=120)
+
+    root_6.mainloop()
 
 #連立方程式　test065.py
 def sub_window_7():
@@ -277,7 +278,7 @@ def sub_window_7():
         root_7_1.resizable(False, False)
 
         def sub():
-            a=txt_1.get()
+            a=txt_6_1.get()
             a=int(a)
             root_7_1.destroy()
             sub_window_7_2(a)

@@ -40,11 +40,13 @@ def main_window():
 #微分   test038.py
 def sub_window_1():
     def calc_1():
-        formula=txt_1_1.get()
-        a=txt_1_3.get()
+        try:
+            formula=txt_1_1.get()
+            a=txt_1_3.get()
 
-        anser=derivative.derivative(formula,a)
-
+            anser=derivative.derivative(formula,a)
+        except:
+            anser="Error"
         txt_1_2.delete(0,tkinter.END)
         txt_1_2.insert(0,anser)
 
@@ -77,13 +79,15 @@ def sub_window_1():
 #積分　　test046.py
 def sub_window_2():
     def calc_2():
-        formula=txt_2_1.get()
-        a=txt_2_2.get()
-        b=txt_2_3.get()
-        c=int(txt_2_5.get())
+        try:
+            formula=txt_2_1.get()
+            a=txt_2_2.get()
+            b=txt_2_3.get()
+            c=int(txt_2_5.get())
 
-        anser=integral.integral(formula,a,b,c)
-
+            anser=integral.integral(formula,a,b,c)
+        except:
+            anser="Error"
         txt_2_4.delete(0,tkinter.END)
         txt_2_4.insert(0,anser)
 
@@ -124,10 +128,12 @@ def sub_window_2():
 #因数分解　test064.py
 def sub_window_3():
     def calc_3():
-        formula=txt_3_1.get()
+        try:
+            formula=txt_3_1.get()
 
-        anser=factorization.factorization(formula)
-
+            anser=factorization.factorization(formula)
+        except:
+            anser="Error"
         txt_3_2.delete(0,tkinter.END)
         txt_3_2.insert(0,anser)
 
@@ -154,10 +160,13 @@ def sub_window_3():
 #方程式　　test044.py
 def sub_window_4():
     def calc_4():
-        formula=txt_4_1.get()
+        try:
+            formula=txt_4_1.get()
 
-        anser=equation.equation(formula)
-
+            anser=equation.equation(formula)
+        except:
+            anser=[]
+            anser.append("Error")
         listbox.delete(0,tkinter.END)
         for i in range(0,len(anser),1):
             listbox.insert(tkinter.END,anser[i])
@@ -195,14 +204,16 @@ def sub_window_4():
 #テーラー展開　　test043.py
 def sub_window_5():
     def calc_5():
-        formula=txt_5_1.get()
-        a=int(txt_5_3.get())
-        b=float(txt_5_4.get())
-        c=int(txt_5_6.get())
-        d=float(txt_5_5.get())
+        try:
+            formula=txt_5_1.get()
+            a=int(txt_5_3.get())
+            b=float(txt_5_4.get())
+            c=int(txt_5_6.get())
+            d=float(txt_5_5.get())
 
-        anser=taylor.taylor(formula,a,b,c,d)
-
+            anser=taylor.taylor(formula,a,b,c,d)
+        except:
+            anser="Error"
         txt_5_2.delete("1.0",tkinter.END)
         txt_5_2.insert("1.0",anser)
 
@@ -238,7 +249,7 @@ def sub_window_5():
     lbl_5_4=tkinter.Label(root_5,text="関数を入力してください",font=("",20))
     lbl_5_4.place(x=0,y=0)
 
-    txt_5_3.insert(0,50)
+    txt_5_3.insert(0,10)
     txt_5_4.insert(0,0)
     txt_5_5.insert(0,15)
     txt_5_6.insert(0,1)
@@ -248,10 +259,12 @@ def sub_window_5():
 #階乗     test049.py
 def sub_window_6():
     def calc_6():
-        formula=int(txt_6_1.get())
+        try:
+            formula=int(txt_6_1.get())
 
-        anser=Factorial.Factorial(formula)
-
+            anser=Factorial.Factorial(formula)
+        except:
+            anser="Error"
         txt_6_2.delete(0,tkinter.END)
         txt_6_2.insert(0,anser)
 
@@ -279,10 +292,13 @@ def sub_window_6():
 def sub_window_7():
     def sub_window_7_1():
         def calc_7_1():
-            a=int(txt_7_1_1.get())
-            root_7_1.destroy()
-            sub_window_7_2(a)
-
+            try:
+                a=int(txt_7_1_1.get())
+                root_7_1.destroy()
+                sub_window_7_2(a)
+            except:
+                lbl_7_1_2=tkinter.Label(root_7_1,text="Error",font=("",15),fg="#ff0000")
+                lbl_7_1_2.place(x=200,y=0)
         root_7_1=tkinter.Toplevel()
         root_7_1.title(u"連立方程式")
         root_7_1.geometry("400x180")
@@ -293,7 +309,7 @@ def sub_window_7():
         btn_7_1_2=tkinter.Button(root_7_1,text="連立方程式を閉じる",command=root_7_1.destroy,width=40,height=1,bg="#ffa300")
         btn_7_1_2.place(x=50,y=140)
 
-        lbl_7_1_1=tkinter.Label(root_7_1,text="式の数を入力してください",font=10)
+        lbl_7_1_1=tkinter.Label(root_7_1,text="式の数を入力してください",font=("",15))
         lbl_7_1_1.place(x=20,y=30)
 
         txt_7_1_1=tkinter.Entry(root_7_1,width=4,font=("",30))
@@ -303,12 +319,14 @@ def sub_window_7():
 
     def sub_window_7_2(a):
         def calc_7_2():
-            formura=[]
-            for i in range(0,int(a),1):
-                formura.append(txt_7_2_1[i].get())
+            try:
+                formura=[]
+                for i in range(0,int(a),1):
+                    formura.append(txt_7_2_1[i].get())
 
-            anser=equations.equations(formura)
-
+                anser=equations.equations(formura)
+            except:
+                anser="Error"
             txt_7_2_a.delete(0,tkinter.END)
             txt_7_2_a.insert(0,anser)
 
@@ -350,11 +368,15 @@ def sub_window_7():
 #BMI    test030.py
 def sub_window_8():
     def calc_8():
-        a=float(txt_8_1.get())
-        b=float(txt_8_2.get())
+        try:
+            a=float(txt_8_1.get())
+            b=float(txt_8_2.get())
 
-        anser=BMI.BMI(a,b)
-
+            anser=BMI.BMI(a,b)
+        except:
+            anser=[]
+            anser.append("Error")
+            anser.append("Error")
         txt_8_3.delete(0,tkinter.END)
         txt_8_4.delete(0,tkinter.END)
         txt_8_3.insert(0,anser[0])
@@ -393,11 +415,13 @@ def sub_window_8():
 #極限　　test067.py
 def sub_window_9():
     def calc_9():
-        formula=txt_9_1.get()
-        a=txt_9_3.get()
+        try:
+            formula=txt_9_1.get()
+            a=txt_9_3.get()
 
-        anser=lim.lim(formula,a)
-
+            anser=lim.lim(formula,a)
+        except:
+            anser="Error"
         txt_9_2.delete(0,tkinter.END)
         txt_9_2.insert(0,anser)
 
@@ -432,37 +456,39 @@ def sub_window_9():
 #行列　　test074.py
 def sub_window_10():
     def calc_10(c):
-        a=int(txt_10_3.get())
-        b=int(txt_10_4.get())
-        LIST=[]
-        for i in range(1,b+1,1):
-            list=[]
-            for j in range(0,a,1):
-                m_1=txt_10_1.get(f"{i}.{3*j}")
-                m_2=txt_10_1.get(f"{i}.{3*j+1}")
-                m=int(m_2)
-                if m_1==" ":
-                    m=m
-                elif m_1=="-":
-                    m=-m
-                list.append(m)
-            LIST.append(list)
-        A=Matrix(LIST)
+        try:
+            a=int(txt_10_3.get())
+            b=int(txt_10_4.get())
+            LIST=[]
+            for i in range(1,b+1,1):
+                list=[]
+                for j in range(0,a,1):
+                    m_1=txt_10_1.get(f"{i}.{3*j}")
+                    m_2=txt_10_1.get(f"{i}.{3*j+1}")
+                    m=int(m_2)
+                    if m_1==" ":
+                        m=m
+                    elif m_1=="-":
+                        m=-m
+                    list.append(m)
+                LIST.append(list)
+            A=Matrix(LIST)
 
-        anser=matrix.calculation(A,a,b,c)
+            anser=matrix.calculation(A,a,b,c)
 
-        txt_10_5.delete(0,tkinter.END)
-        txt_10_5.insert(0,anser[1])
-        txt_10_2.delete("0.end",tkinter.END)
-        if anser[2]==0:
-            for k in range(0,anser[3],1):
-                B=str(anser[0].row(k))
-                C=B.replace("Matrix","").replace("([[","[").replace("]])","]\n")
-                txt_10_2.insert(f"{k+1}.{0}",C)
-        elif anser[2]==1:
-            txt_10_2.insert("1.0",anser[0])
-
-
+            txt_10_5.delete(0,tkinter.END)
+            txt_10_5.insert(0,anser[1])
+            txt_10_2.delete("0.end",tkinter.END)
+            if anser[2]==0:
+                for k in range(0,anser[3],1):
+                    B=str(anser[0].row(k))
+                    C=B.replace("Matrix","").replace("([[","[").replace("]])","]\n")
+                    txt_10_2.insert(f"{k+1}.{0}",C)
+            elif anser[2]==1:
+                txt_10_2.insert("1.0",anser[0])
+        except:
+            txt_10_2.delete("0.end",tkinter.END)
+            txt_10_2.insert("0.0","Error")
     root_10=tkinter.Toplevel()
     root_10.title(u"行列")
     root_10.geometry("1000x500")

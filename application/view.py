@@ -44,6 +44,7 @@ def sub_window_1():
         a=txt_1_3.get()
 
         anser=derivative.derivative(formula,a)
+
         txt_1_2.delete(0,tkinter.END)
         txt_1_2.insert(0,anser)
 
@@ -80,6 +81,7 @@ def sub_window_2():
         c=int(txt_2_5.get())
 
         anser=integral.integral(formula,a,b,c)
+
         txt_2_4.delete(0,tkinter.END)
         txt_2_4.insert(0,anser)
 
@@ -121,6 +123,7 @@ def sub_window_3():
         formula=txt_3_1.get()
 
         anser=factorization.factorization(formula)
+
         txt_3_2.delete(0,tkinter.END)
         txt_3_2.insert(0,anser)
 
@@ -150,6 +153,7 @@ def sub_window_4():
         formula=txt_4_1.get()
 
         anser=equation.equation(formula)
+
         listbox.delete(0,tkinter.END)
         for i in range(0,len(anser),1):
             listbox.insert(tkinter.END,anser[i])
@@ -194,6 +198,7 @@ def sub_window_5():
         d=float(txt_5_5.get())
 
         anser=taylor.taylor(formula,a,b,c,d)
+
         txt_5_2.delete("1.0",tkinter.END)
         txt_5_2.insert("1.0",anser)
 
@@ -345,55 +350,46 @@ def sub_window_7():
 
 #BMI    test030.py
 def sub_window_8():
-    root_7=tkinter.Toplevel()
-    root_7.title(u"BMI")
-    root_7.geometry("300x330")
-    root_7.resizable(False, False)
+    def calc_8():
+        a=float(txt_8_1.get())
+        b=float(txt_8_2.get())
 
-    btn_6_1=tkinter.Button(root_7,text="BMIを閉じる",command=root_7.destroy)
-    btn_6_1.place(x=120,y=300)
+        anser=BMI.BMI(a,b)
 
-    lbl_1=tkinter.Label(root_7,text="身長(cm)")
-    lbl_1.place(x=30,y=70)
-    lbl_2=tkinter.Label(root_7,text="体重(kg)")
-    lbl_2.place(x=30,y=100)
-    lbl_3=tkinter.Label(root_7,text="BMI")
-    lbl_3.place(x=30,y=200)
-    lbl_4=tkinter.Label(root_7,text="肥満度")
-    lbl_4.place(x=30,y=230)
+        txt_8_3.delete(0,tkinter.END)
+        txt_8_4.delete(0,tkinter.END)
+        txt_8_3.insert(0,anser[0])
+        txt_8_4.insert(0,anser[1])
 
-    txt_1=tkinter.Entry(root_7,width=20)
-    txt_1.place(x=110,y=70)
-    txt_2=tkinter.Entry(root_7,width=20)
-    txt_2.place(x=110,y=100)
-    txt_3=tkinter.Entry(root_7,width=20)
-    txt_3.place(x=110,y=200)
-    txt_4=tkinter.Entry(root_7,width=20)
-    txt_4.place(x=110,y=230)
+    root_8=tkinter.Toplevel()
+    root_8.title(u"BMI")
+    root_8.geometry("480x330")
+    root_8.resizable(False, False)
 
+    btn_8_1=tkinter.Button(root_8,text="計算",command=calc_8,font=("",20),width=20)
+    btn_8_1.place(x=100,y=110)
+    btn_8_2=tkinter.Button(root_8,text="BMIを閉じる",command=root_8.destroy,font=("",15),width=28,height=1,bg="#ffa300")
+    btn_8_2.place(x=90,y=270)
 
-    def btn_click():
-        txt_3.delete(0,tkinter.END)
-        txt_4.delete(0,tkinter.END)
+    lbl_8_1=tkinter.Label(root_8,text="身長(cm)",font=("",20))
+    lbl_8_1.place(x=30,y=20)
+    lbl_8_2=tkinter.Label(root_8,text="体重(kg)",font=("",20))
+    lbl_8_2.place(x=30,y=60)
+    lbl_8_3=tkinter.Label(root_8,text="BMI",font=("",20))
+    lbl_8_3.place(x=30,y=180)
+    lbl_8_4=tkinter.Label(root_8,text="肥満度",font=("",20))
+    lbl_8_4.place(x=30,y=220)
 
-        身長=float(txt_1.get())
-        体重=float(txt_2.get())
+    txt_8_1=tkinter.Entry(root_8,width=20,font=("",20))
+    txt_8_1.place(x=150,y=20)
+    txt_8_2=tkinter.Entry(root_8,width=20,font=("",20))
+    txt_8_2.place(x=150,y=60)
+    txt_8_3=tkinter.Entry(root_8,width=20,font=("",20))
+    txt_8_3.place(x=150,y=180)
+    txt_8_4=tkinter.Entry(root_8,width=20,font=("",20))
+    txt_8_4.place(x=150,y=220)
 
-        BMI=int(体重)*10000/(int(身長)*int(身長))
-
-        txt_3.insert(0,BMI)
-
-        if BMI<18.5:
-            txt_4.insert(0,"あなたは低体重です")
-        elif BMI>=18.5 and BMI<25:
-            txt_4.insert(0,"あなたは普通体重です")
-        else:
-            txt_4.insert(0,"あなたは肥満です")
-
-    btn=tkinter.Button(root_7,text="計算",command=btn_click)
-    btn.place(x=140,y=140)
-
-    root_7.mainloop()
+    root_8.mainloop()
 
 #極限　　test067.py
 def sub_window_9():

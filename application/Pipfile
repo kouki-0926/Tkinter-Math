@@ -9,6 +9,7 @@ verify_ssl = true
 tkinter = "*"
 sympy = "*"
 functools = "*"
+math = "*"
 
 [requires]
 python_version = "3.8"

@@ -54,19 +54,21 @@ def sub_window_1():
     root_1.resizable(False, False)
 
     btn_1_1=tkinter.Button(root_1,text="計算",width=20,command=calc_1,font=("",20))
-    btn_1_1.place(x=500,y=140)
+    btn_1_1.place(x=500,y=130)
+    btn_1_2=tkinter.Button(root_1,text="微分を閉じる",width=40,command=root_1.destroy,font=("",10),bg="#ffa300")
+    btn_1_2.place(x=500,y=260)
 
     txt_1_1=tkinter.Entry(root_1,width=73,font=("",30))
     txt_1_1.place(x=20,y=50)
     txt_1_2=tkinter.Entry(root_1,width=73,font=("",30))
-    txt_1_2.place(x=20,y=220)
+    txt_1_2.place(x=20,y=200)
     txt_1_3=tkinter.Entry(root_1,width=2,font=("",30))
-    txt_1_3.place(x=1000,y=140)
+    txt_1_3.place(x=1000,y=130)
 
     lbl_1_1=tkinter.Label(root_1,text="関数を入力してください",font=("",20))
     lbl_1_1.place(x=20,y=15)
     lbl_1_2=tkinter.Label(root_1,text="導関数",font=("",20))
-    lbl_1_2.place(x=20,y=185)
+    lbl_1_2.place(x=20,y=165)
 
     txt_1_3.insert(0,"x")
 
@@ -92,6 +94,8 @@ def sub_window_2():
 
     btn_2_1=tkinter.Button(root_2,text="計算",width=20,command=calc_2,font=("",20))
     btn_2_1.place(x=580,y=200)
+    btn_2_2=tkinter.Button(root_2,text="積分を閉じる",width=40,command=root_2.destroy,font=("",10),bg="#ffa300")
+    btn_2_2.place(x=580,y=250)
 
     txt_2_1=tkinter.Entry(root_2,width=20,font=("",40))
     txt_2_1.place(x=80,y=90)
@@ -274,31 +278,40 @@ def sub_window_6():
 #連立方程式　test065.py
 def sub_window_7():
     def sub_window_7_1():
+        def calc_7_1():
+            a=int(txt_7_1_1.get())
+            root_7_1.destroy()
+            sub_window_7_2(a)
+
         root_7_1=tkinter.Toplevel()
         root_7_1.title(u"連立方程式")
         root_7_1.geometry("400x180")
         root_7_1.resizable(False, False)
 
-        def sub():
-            a=txt_7_1.get()
-            a=int(a)
-            root_7_1.destroy()
-            sub_window_7_2(a)
+        btn_7_1_1=tkinter.Button(root_7_1,text="実行",command=calc_7_1,width=40,height=3)
+        btn_7_1_1.place(x=50,y=80)
+        btn_7_1_2=tkinter.Button(root_7_1,text="連立方程式を閉じる",command=root_7_1.destroy,width=40,height=1,bg="#ffa300")
+        btn_7_1_2.place(x=50,y=140)
 
-        btn_1=tkinter.Button(root_7_1,text="実行",command=sub,width=40,height=3)
-        btn_1.place(x=50,y=80)
-        btn_2=tkinter.Button(root_7_1,text="連立方程式を閉じる",command=root_7_1.destroy,width=40,height=1)
-        btn_2.place(x=50,y=140)
+        lbl_7_1_1=tkinter.Label(root_7_1,text="式の数を入力してください",font=10)
+        lbl_7_1_1.place(x=20,y=30)
 
-        lbl_1=tkinter.Label(root_7_1,text="式の数を入力してください",font=10)
-        lbl_1.place(x=20,y=30)
-
-        txt_1=tkinter.Entry(root_7_1,width=4,font=("",30))
-        txt_1.place(x=270,y=25)
+        txt_7_1_1=tkinter.Entry(root_7_1,width=4,font=("",30))
+        txt_7_1_1.place(x=270,y=25)
 
         root_7_1.mainloop()
 
     def sub_window_7_2(a):
+        def calc_7_2():
+            formura=[]
+            for i in range(0,int(a),1):
+                formura.append(txt_7_2_1[i].get())
+
+            anser=equations.equations(formura)
+
+            txt_7_2_a.delete(0,tkinter.END)
+            txt_7_2_a.insert(0,anser)
+
         width=1000
         height=a*40+230
         root_7_2=tkinter.Toplevel()
@@ -306,43 +319,29 @@ def sub_window_7():
         root_7_2.geometry(f"{width}x{height}")
         root_7_2.resizable(False, False)
 
-        def fa():
-            formura=[]
-            for i in range(0,int(a),1):
-                formura.append(txt_2_1[i].get())
+        btn_7_2_1=tkinter.Button(root_7_2,text="計算",width=20,command=calc_7_2,font=("",20))
+        btn_7_2_1.place(x=380,y=a*45+45)
+        btn_7_2_2=tkinter.Button(root_7_2,text="連立方程式を閉じる",width=20,command=root_7_2.destroy,font=("",20),bg="#ffa300")
+        btn_7_2_2.place(x=380,y=a*45+150)
 
-            A=solve(formura)
-
-            txt_2_a.delete(0,tkinter.END)
-            txt_2_a.insert(0,A)
-
-
-
-        btn_2_1=tkinter.Button(root_7_2,text="計算",width=20,command=fa,font=10)
-        btn_2_1.place(x=380,y=a*45+50)
-        btn_2_2=tkinter.Button(root_7_2,text="連立方程式を閉じる",width=20,command=root_7_2.destroy,font=10)
-        btn_2_2.place(x=380,y=a*45+150)
-
-
-        lbl_2_1=[]
-        lbl_2_2=[]
+        lbl_7_2_1=[]
+        lbl_7_2_2=[]
         for i in range(0,int(a),1):
-            lbl_2_1.append(tkinter.Label(root_7_2,text="式{}".format(i+1),font=("",30)))
-            lbl_2_1[i].place(x=0,y=i*45+30)
-            lbl_2_2.append(tkinter.Label(root_7_2,text="=0",font=("",30)))
-            lbl_2_2[i].place(x=930,y=i*45+30)
+            lbl_7_2_1.append(tkinter.Label(root_7_2,text="式{}".format(i+1),font=("",30)))
+            lbl_7_2_1[i].place(x=0,y=i*45+30)
+            lbl_7_2_2.append(tkinter.Label(root_7_2,text="=0",font=("",30)))
+            lbl_7_2_2[i].place(x=930,y=i*45+30)
 
-        lbl_2_a=tkinter.Label(root_7_2,text="解",font=("",30))
-        lbl_2_a.place(x=10,y=a*45+100)
+        lbl_7_2_a=tkinter.Label(root_7_2,text="解",font=("",30))
+        lbl_7_2_a.place(x=10,y=a*45+100)
 
-
-        txt_2_1=[]
+        txt_7_2_1=[]
         for i in range(0,int(a),1):
-            txt_2_1.append(tkinter.Entry(root_7_2,width=42,font=("",30)))
-            txt_2_1[i].place(x=80,y=i*45+30)
+            txt_7_2_1.append(tkinter.Entry(root_7_2,width=42,font=("",30)))
+            txt_7_2_1[i].place(x=80,y=i*45+30)
 
-        txt_2_a=tkinter.Entry(root_7_2,width=42,font=("",30))
-        txt_2_a.place(x=80,y=a*45+100)
+        txt_7_2_a=tkinter.Entry(root_7_2,width=42,font=("",30))
+        txt_7_2_a.place(x=80,y=a*45+100)
 
         root_7_2.mainloop()
 

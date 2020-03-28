@@ -9,8 +9,14 @@ def calculation(A,a,b,c):
             d=0
 
         elif c==1:
-            A=A**2
-            D="A^2"
+            A=A.diagonalize()
+            A=list(A)
+            P=A[0]
+            A=A[1]
+            for i in range(0,b,1):
+                A[i,i]="("+str(A[i,i])+")^n"
+            A=P*A*P.inv()
+            D="A^n"
             d=0
 
         elif c==2:

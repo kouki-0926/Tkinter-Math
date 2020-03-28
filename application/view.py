@@ -457,12 +457,12 @@ def sub_window_9():
 def sub_window_10():
     def calc_10(c):
         try:
-            a=int(txt_10_3.get())
-            b=int(txt_10_4.get())
+            Ar=int(txt_10_3.get())
+            Ac=int(txt_10_4.get())
             LIST=[]
-            for i in range(1,b+1,1):
+            for i in range(1,Ar+1,1):
                 list=[]
-                for j in range(0,a,1):
+                for j in range(0,Ac,1):
                     m_1=txt_10_1.get(f"{i}.{3*j}")
                     m_2=txt_10_1.get(f"{i}.{3*j+1}")
                     m=int(m_2)
@@ -474,17 +474,17 @@ def sub_window_10():
                 LIST.append(list)
             A=Matrix(LIST)
 
-            anser=matrix.calculation(A,a,b,c)
+            anser=matrix.calculation(A,Ar,Ac,c)
 
             txt_10_5.delete(0,tkinter.END)
-            txt_10_5.insert(0,anser[1])
+            txt_10_5.insert(0,anser[3])
             txt_10_2.delete("0.end",tkinter.END)
-            if anser[2]==0:
-                for k in range(0,anser[3],1):
+            if anser[4]==0:
+                for k in range(0,anser[1],1):
                     B=str(anser[0].row(k))
                     C=B.replace("Matrix","").replace("**","^").replace("*","").replace("([[","[").replace("]])","]\n")
                     txt_10_2.insert(f"{k+1}.{0}",C)
-            elif anser[2]==1:
+            elif anser[4]==1:
                 txt_10_2.insert("1.0",anser[0])
         except:
             txt_10_2.delete("0.end",tkinter.END)
@@ -548,15 +548,16 @@ def sub_window_10():
 
     root_10.mainloop()
 
+#行列2　test075.py
 def sub_window_11():
     def calc_11(e):
         try:
-            a=int(txt_11_4.get())
-            b=int(txt_11_5.get())
+            Ar=int(txt_11_4.get())
+            Ac=int(txt_11_5.get())
             LIST=[]
-            for i in range(1,a+1,1):
+            for i in range(1,Ar+1,1):
                 list=[]
-                for j in range(0,b,1):
+                for j in range(0,Ac,1):
                     m_1=txt_11_1.get(f"{i}.{3*j}")
                     m_2=txt_11_1.get(f"{i}.{3*j+1}")
                     m=int(m_2)
@@ -568,12 +569,12 @@ def sub_window_11():
                 LIST.append(list)
             A=Matrix(LIST)
 
-            c=int(txt_11_6.get())
-            d=int(txt_11_7.get())
+            Br=int(txt_11_6.get())
+            Bc=int(txt_11_7.get())
             LIST=[]
-            for i in range(1,c+1,1):
+            for i in range(1,Br+1,1):
                 list=[]
-                for j in range(0,d,1):
+                for j in range(0,Bc,1):
                     m_1=txt_11_2.get(f"{i}.{3*j}")
                     m_2=txt_11_2.get(f"{i}.{3*j+1}")
                     m=int(m_2)
@@ -588,7 +589,7 @@ def sub_window_11():
             k=int(txt_11_8.get())
             l=int(txt_11_9.get())
 
-            anser=matrix_2.calculation(A,B,a,b,c,d,e,k,l)
+            anser=matrix_2.calculation(A,B,Ar,Ac,Br,Bc,e,k,l)
 
             txt_11_10.delete(0,tkinter.END)
             txt_11_10.insert(0,anser[1])
@@ -603,11 +604,11 @@ def sub_window_11():
 
 
     root_11=tkinter.Toplevel()
-    root_11.title(u"行列")
+    root_11.title(u"行列2")
     root_11.geometry("1400x500")
     root_11.resizable(False, False)
 
-    btn_11_1=tkinter.Button(root_11,text="行列を閉じる",width=30,command=root_11.destroy,font=("",15),bg="#ffa300")
+    btn_11_1=tkinter.Button(root_11,text="行列2を閉じる",width=30,command=root_11.destroy,font=("",15),bg="#ffa300")
     btn_11_1.place(x=1030,y=460)
     btn_11_2=tkinter.Button(root_11,text="A",command=partial(calc_11,0),width=30,font=("",15))
     btn_11_2.place(x=1030,y=260)

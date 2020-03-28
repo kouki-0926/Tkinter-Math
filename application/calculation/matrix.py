@@ -1,11 +1,13 @@
 from sympy import *
 
-def calculation(A,a,b,c):
+def calculation(A,Ar,Ac,c):
     try:
-        anser=[]
+        Anser=[]
         if c==0:
-            A=A
-            D="A"
+            anser=A
+            anser_r=Ar
+            anser_c=Ac
+            type="A"
             d=0
 
         elif c==1:
@@ -13,70 +15,90 @@ def calculation(A,a,b,c):
             A=list(A)
             P=A[0]
             A=A[1]
-            for i in range(0,b,1):
+            for i in range(0,Ac,1):
                 A[i,i]="("+str(A[i,i])+")^n"
-            A=P*A*P.inv()
-            D="A^n"
+            anser=P*A*P.inv()
+            anser_r=Ar
+            anser_c=Ac
+            type="A^n"
             d=0
 
         elif c==2:
-            A=A.transpose()
-            D="A^t"
-            b=a
+            anser=A.transpose()
+            anser_r=Ac
+            anser_c=Ar
+            type="A^t"
             d=0
 
         elif c==3:
-            A=A.inv()
-            D="A^-1"
+            anser=A.inv()
+            anser_r=Ar
+            anser_c=Ac
+            type="A^-1"
             d=0
 
         elif c==4:
-            A=A.adjugate()
-            D="A~"
+            anser=A.adjugate()
+            anser_r=Ar
+            anser_c=Ac
+            type="A~"
             d=0
 
         elif c==5:
-            A=A.det()
-            D="det(A)"
+            anser=A.det()
+            anser_r=Ar
+            anser_c=Ac
+            type="det(A)"
             d=1
 
         elif c==6:
-            A=A.rank()
-            D="rank(A)"
+            anser=A.rank()
+            anser_r=Ar
+            anser_c=Ac
+            type="rank(A)"
             d=1
 
         elif c==7:
-            A=A.trace()
-            D="tr(A)"
+            anser=A.trace()
+            anser_r=Ar
+            anser_c=Ac
+            type="tr(A)"
             d=1
 
         elif c==8:
             A=A.eigenvals()
-            A=list(A)
-            D="λ"
+            anser=list(A)
+            anser_r=Ar
+            anser_c=Ac
+            type="λ"
             d=1
 
         elif c==9:
             A=A.diagonalize()
             A=list(A)
-            A=A[0]
-            D="P"
+            anser=A[0]
+            anser_r=Ar
+            anser_c=Ac
+            type="P"
             d=0
 
         elif c==10:
             A=A.diagonalize()
             A=list(A)
-            A=A[1]
-            D="P^-1AP"
+            anser=A[1]
+            anser_r=Ar
+            anser_c=Ac
+            type="P^-1AP"
             d=0
     except:
         A="Error"
         D="Error"
         d=1
 
-    anser.append(A)
-    anser.append(D)
-    anser.append(d)
-    anser.append(b)
+    Anser.append(anser)
+    Anser.append(anser_r)
+    Anser.append(anser_c)
+    Anser.append(type)
+    Anser.append(d)
 
-    return anser
+    return Anser

@@ -1,37 +1,38 @@
 from sympy import *
 
-def calculation(A,B,a,b,c,d,e,k,l):
+def calculation(A,B,Ar,Ac,Br,Bc,e,k,l):
     try:
         Anser=[]
         if e==0:
             anser=A
             type="A"
-            g=a
-            h=b
+            anser_r=Ar
+            anser_c=Ac
 
         elif e==1:
             anser=B
             type="B"
-            g=c
-            h=d
+            anser_r=Br
+            anser_c=Bc
 
         elif e==2:
             anser=k*A+l*B
             type=str(k)+"A+"+str(l)+"B"
-            g=a
-            h=b
+            anser_r=Ar
+            anser_c=Ac
 
         elif e==3:
             anser=A*B
             type="AB"
-            g=a
-            h=d
+            anser_r=Ar
+            anser_c=Bc
 
         elif e==4:
             anser=B*A
             type="BA"
-            g=c
-            h=b
+            anser_r=Br
+            anser_c=Ac
+
     except:
         anser=None
         type="Error"
@@ -40,7 +41,7 @@ def calculation(A,B,a,b,c,d,e,k,l):
 
     Anser.append(anser)
     Anser.append(type)
-    Anser.append(g)
-    Anser.append(h)
+    Anser.append(anser_r)
+    Anser.append(anser_c)
 
     return Anser

@@ -7,7 +7,7 @@ from sympy import *
 def main_window():
     root=tkinter.Tk()
     root.title(u"math")
-    root.geometry("600x290")
+    root.geometry("600x320")
     root.resizable(False, False)
 
     btn_1=tkinter.Button(root,text="微分",command=sub_window_1,width=20,height=4)
@@ -32,8 +32,10 @@ def main_window():
     btn_10.place(x=150,y=180)
     btn_11=tkinter.Button(root,text="行列２",command=sub_window_11,width=20,height=4)
     btn_11.place(x=300,y=180)
-    btn_d=tkinter.Button(root,text="mathを閉じる",command=root.destroy,width=20,height=4,bg="#ffa300")
-    btn_d.place(x=450,y=180)
+    btn_12=tkinter.Button(root,text="進数変換",command=sub_window_12,width=20,height=4)
+    btn_12.place(x=450,y=180)
+    btn_d=tkinter.Button(root,text="mathを閉じる",command=root.destroy,width=84,height=2,bg="#ffa300")
+    btn_d.place(x=0,y=255)
 
     root.mainloop()
 
@@ -675,3 +677,93 @@ def sub_window_11():
     txt_11_9.insert(0,"2")
 
     root_11.mainloop()
+
+#進数変換　test078.py
+def sub_window_12():
+    def calc_12():
+        try:
+            if txt_1.get()!="":
+                bin=txt_1.get()
+                oct=format(int(bin,2),"o")
+                dec=int(bin,2)
+                hex=format(int(bin,2),"x")
+
+            elif txt_2.get()!="":
+                oct=txt_2.get()
+                bin=format(int(oct,8),"b")
+                dec=int(oct,8)
+                hex=format(int(oct,8),"x")
+
+            elif txt_3.get()!="":
+                dec=int(txt_3.get())
+                bin = format(dec, 'b')
+                oct = format(dec, 'o')
+                hex = format(dec, 'x')
+
+            elif txt_4.get()!="":
+                hex=txt_4.get()
+                bin=format(int(hex,16),"b")
+                oct=format(int(hex,16),"o")
+                dec=int(oct,8)
+
+            else:
+                bin="Error"
+                oct="Error"
+                dec="Error"
+                hex="Error"
+
+            txt_1.delete(0,tkinter.END)
+            txt_1.insert(0,bin)
+            txt_2.delete(0,tkinter.END)
+            txt_2.insert(0,oct)
+            txt_3.delete(0,tkinter.END)
+            txt_3.insert(0,dec)
+            txt_4.delete(0,tkinter.END)
+            txt_4.insert(0,hex)
+        except:
+            txt_1.delete(0,tkinter.END)
+            txt_1.insert(0,"Error")
+            txt_2.delete(0,tkinter.END)
+            txt_2.insert(0,"Error")
+            txt_3.delete(0,tkinter.END)
+            txt_3.insert(0,"Error")
+            txt_4.delete(0,tkinter.END)
+            txt_4.insert(0,"Error")
+
+    def dele():
+        txt_1.delete(0,tkinter.END)
+        txt_2.delete(0,tkinter.END)
+        txt_3.delete(0,tkinter.END)
+        txt_4.delete(0,tkinter.END)
+
+    root_12=tkinter.Toplevel()
+    root_12.title(u"進数変換")
+    root_12.geometry("430x330")
+    root_12.resizable(False, False)
+
+    btn_1=tkinter.Button(root_12,text="進数変換を閉じる",width=34,command=root_12.destroy,font=("",15),bg="#ffa300")
+    btn_1.place(x=20,y=270)
+    btn_2=tkinter.Button(root_12,text="計算",command=calc_12,width=34,font=("",15))
+    btn_2.place(x=20,y=180)
+    btn_3=tkinter.Button(root_12,text="全削除",command=dele,width=34,font=("",15))
+    btn_3.place(x=20,y=220)
+
+    lbl_1=tkinter.Label(root_12,text="２進数",font=("",20))
+    lbl_1.place(x=20,y=20)
+    lbl_2=tkinter.Label(root_12,text="８進数",font=("",20))
+    lbl_2.place(x=20,y=60)
+    lbl_3=tkinter.Label(root_12,text="１０進数",font=("",20))
+    lbl_3.place(x=10,y=100)
+    lbl_4=tkinter.Label(root_12,text="１６進数",font=("",20))
+    lbl_4.place(x=10,y=140)
+
+    txt_1=tkinter.Entry(root_12,font=("",20))
+    txt_1.place(x=120,y=20)
+    txt_2=tkinter.Entry(root_12,font=("",20))
+    txt_2.place(x=120,y=60)
+    txt_3=tkinter.Entry(root_12,font=("",20))
+    txt_3.place(x=120,y=100)
+    txt_4=tkinter.Entry(root_12,font=("",20))
+    txt_4.place(x=120,y=140)
+
+    root_12.mainloop()

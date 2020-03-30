@@ -683,52 +683,30 @@ def sub_window_12():
     def calc_12():
         try:
             if txt_1.get()!="":
-                bin=txt_1.get()
-                oct=format(int(bin,2),"o")
-                dec=int(bin,2)
-                hex=format(int(bin,2),"x")
-
+                base="binary"
+                before_conversion=txt_1.get()
             elif txt_2.get()!="":
-                oct=txt_2.get()
-                bin=format(int(oct,8),"b")
-                dec=int(oct,8)
-                hex=format(int(oct,8),"x")
-
+                base="octal"
+                before_conversion=txt_2.get()
             elif txt_3.get()!="":
-                dec=int(txt_3.get())
-                bin = format(dec, 'b')
-                oct = format(dec, 'o')
-                hex = format(dec, 'x')
-
+                base="decimal"
+                before_conversion=txt_3.get()
             elif txt_4.get()!="":
-                hex=txt_4.get()
-                bin=format(int(hex,16),"b")
-                oct=format(int(hex,16),"o")
-                dec=int(oct,8)
+                base="hexadecimal"
+                before_conversion=txt_4.get()
 
-            else:
-                bin="Error"
-                oct="Error"
-                dec="Error"
-                hex="Error"
-
-            txt_1.delete(0,tkinter.END)
-            txt_1.insert(0,bin)
-            txt_2.delete(0,tkinter.END)
-            txt_2.insert(0,oct)
-            txt_3.delete(0,tkinter.END)
-            txt_3.insert(0,dec)
-            txt_4.delete(0,tkinter.END)
-            txt_4.insert(0,hex)
+            anser=base_conversion.base_conversion(base,before_conversion)
         except:
-            txt_1.delete(0,tkinter.END)
-            txt_1.insert(0,"Error")
-            txt_2.delete(0,tkinter.END)
-            txt_2.insert(0,"Error")
-            txt_3.delete(0,tkinter.END)
-            txt_3.insert(0,"Error")
-            txt_4.delete(0,tkinter.END)
-            txt_4.insert(0,"Error")
+            anser=["Error","Error","Error","Error"]
+
+        txt_1.delete(0,tkinter.END)
+        txt_1.insert(0,anser[0])
+        txt_2.delete(0,tkinter.END)
+        txt_2.insert(0,anser[1])
+        txt_3.delete(0,tkinter.END)
+        txt_3.insert(0,anser[2])
+        txt_4.delete(0,tkinter.END)
+        txt_4.insert(0,anser[3])
 
     def dele():
         txt_1.delete(0,tkinter.END)

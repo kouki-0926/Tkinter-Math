@@ -9,3 +9,4 @@ from . import BMI
 from . import lim
 from . import matrix
 from . import matrix_2
+from . import base_conversion

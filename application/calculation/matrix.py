@@ -95,10 +95,6 @@ def calculation(A,Ar,Ac,c):
         D="Error"
         d=1
 
-    Anser.append(anser)
-    Anser.append(anser_r)
-    Anser.append(anser_c)
-    Anser.append(type)
-    Anser.append(d)
+    Anser=[anser,anser_r,anser_c,type,d]
 
     return Anser

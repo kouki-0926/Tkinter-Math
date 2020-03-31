@@ -9,10 +9,8 @@ def integral(formula,upper_end,lower_end,type):
 
         if  type==0:
             anser=A
-
         elif type==1:
             anser=A.evalf()
-
         elif type==2:
             g=str(g)
             anser=g.replace("**","A").replace("*","").replace("A","^")

@@ -2,13 +2,12 @@ from sympy import *
 
 def calculation(A,B,Ar,Ac,Br,Bc,e,k,l):
     try:
-        Anser=[]
         if e==0:
             anser=A
             type="A"
             anser_r=Ar
             anser_c=Ac
-
+            
         elif e==1:
             anser=B
             type="B"
@@ -38,10 +37,6 @@ def calculation(A,B,Ar,Ac,Br,Bc,e,k,l):
         type="Error"
         g=None
         h=None
-
-    Anser.append(anser)
-    Anser.append(type)
-    Anser.append(anser_r)
-    Anser.append(anser_c)
+    Anser=[anser,type,anser_r,anser_c]
 
     return Anser

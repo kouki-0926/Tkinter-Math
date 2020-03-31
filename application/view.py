@@ -83,11 +83,11 @@ def sub_window_2():
     def calc_2():
         try:
             formula=txt_2_1.get()
-            a=txt_2_2.get()
-            b=txt_2_3.get()
-            c=int(txt_2_5.get())
+            upper_end=txt_2_2.get()
+            lower_end=txt_2_3.get()
+            type=int(txt_2_5.get())
 
-            anser=integral.integral(formula,a,b,c)
+            anser=integral.integral(formula,upper_end,lower_end,type)
         except:
             anser="Error"
         txt_2_4.delete(0,tkinter.END)
@@ -144,10 +144,10 @@ def sub_window_3():
     root_3.geometry("1000x300")
     root_3.resizable(False, False)
 
-    btn_3_1=tkinter.Button(root_3,text="計算",command=calc_3,width=20,height=3)
-    btn_3_1.place(x=400,y=110)
-    btn_3_2=tkinter.Button(root_3,text="因数分解を閉じる",command=root_3.destroy,width=20,height=2,bg="#ffa300")
-    btn_3_2.place(x=400,y=240)
+    btn_3_1=tkinter.Button(root_3,text="計算",command=calc_3,width=40,height=3)
+    btn_3_1.place(x=330,y=110)
+    btn_3_2=tkinter.Button(root_3,text="因数分解を閉じる",command=root_3.destroy,width=40,height=2,bg="#ffa300")
+    btn_3_2.place(x=330,y=240)
 
     txt_3_1=tkinter.Entry(root_3,width=40,font=("",30))
     txt_3_1.place(x=70,y=50)
@@ -167,8 +167,7 @@ def sub_window_4():
 
             anser=equation.equation(formula)
         except:
-            anser=[]
-            anser.append("Error")
+            anser=["Error"]
         listbox.delete(0,tkinter.END)
         for i in range(0,len(anser),1):
             listbox.insert(tkinter.END,anser[i])
@@ -208,12 +207,12 @@ def sub_window_5():
     def calc_5():
         try:
             formula=txt_5_1.get()
-            a=int(txt_5_3.get())
-            b=float(txt_5_4.get())
-            c=int(txt_5_6.get())
+            dimension=int(txt_5_3.get())
+            center=float(txt_5_4.get())
+            type=int(txt_5_6.get())
             d=float(txt_5_5.get())
 
-            anser=taylor.taylor(formula,a,b,c,d)
+            anser=taylor.taylor(formula,dimension,center,type,d)
         except:
             anser="Error"
         txt_5_2.delete("1.0",tkinter.END)
@@ -371,14 +370,12 @@ def sub_window_7():
 def sub_window_8():
     def calc_8():
         try:
-            a=float(txt_8_1.get())
-            b=float(txt_8_2.get())
+            height=float(txt_8_1.get())
+            weight=float(txt_8_2.get())
 
-            anser=BMI.BMI(a,b)
+            anser=BMI.BMI(height,weight)
         except:
-            anser=[]
-            anser.append("Error")
-            anser.append("Error")
+            anser=["Error","Error"]
         txt_8_3.delete(0,tkinter.END)
         txt_8_4.delete(0,tkinter.END)
         txt_8_3.insert(0,anser[0])

@@ -2,17 +2,17 @@ from sympy import*
 
 x = Symbol('x')
 
-def taylor(formula,a,b,c,d):
+def taylor(formula,dimension,center,type,d):
     try:
         f=integrate(formula)
         f=diff(f)
 
-        A=f.subs(x,b)
-        for number in range(1,a+1,1):
+        A=f.subs(x,center)
+        for number in range(1,dimension+1,1):
             f=diff(f)
-            D=f.subs(x,b)/factorial(number)
+            D=f.subs(x,center)/factorial(number)
 
-            if c==1:
+            if type==1:
                 D=D
             else:
                 d=10**(-d)
@@ -21,7 +21,7 @@ def taylor(formula,a,b,c,d):
                 else:
                     D=D
 
-            A=D*(x-b)**number+A
+            A=D*(x-center)**number+A
 
         A=str(A)
         anser=str(formula)+"≒"+str(A.replace("**","B").replace("*","").replace("B","^"))

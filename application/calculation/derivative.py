@@ -5,27 +5,25 @@ y = Symbol('y')
 
 def derivative(formula,a):
     try:
-        g = formula
-
         if a=="x":
-            f = diff(g,x)
+            A = diff(formula,x)
         elif a=="y":
-            f = diff(g,y)
+            A = diff(formula,y)
         elif a=="xx":
-            f = diff(g,x)
-            f = diff(f,x)
+            f = diff(formula,x)
+            A = diff(f,x)
         elif a=="xy":
-            f = diff(g,x)
-            f = diff(f,y)
+            f = diff(formula,x)
+            A = diff(f,y)
         elif a=="yx":
-            f = diff(g,y)
-            f = diff(f,x)
+            f = diff(formula,y)
+            A = diff(f,x)
         elif a=="yy":
-            f = diff(g,y)
-            f = diff(f,y)
+            f = diff(formula,y)
+            A = diff(f,y)
 
-        f=str(f)
-        anser=f.replace("**","A").replace("*","").replace("A","^")
+        A=str(A)
+        anser=A.replace("**","A").replace("*","").replace("A","^")
     except:
         anser="Error"
     return anser

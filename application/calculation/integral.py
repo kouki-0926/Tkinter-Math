@@ -2,18 +2,16 @@ from sympy import *
 
 x = Symbol('x')
 
-def integral(formula,a,b,c):
+def integral(formula,upper_end,lower_end,type):
     try:
         g=integrate(formula)
-        A=g.subs(x,a)-g.subs(x,b)
+        A=g.subs(x,upper_end)-g.subs(x,lower_end)
 
-        if  c==0:
+        if  type==0:
             anser=A
-
-        elif c==1:
+        elif type==1:
             anser=A.evalf()
-
-        elif c==2:
+        elif type==2:
             g=str(g)
             anser=g.replace("**","A").replace("*","").replace("A","^")
     except:

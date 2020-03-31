@@ -1,16 +1,13 @@
-anser=[]
-def BMI(a,b):
+def BMI(height,weight):
     try:
-        BMI=b*10000/(a*a)
-        anser.append(BMI)
-
+        BMI=weight*10000/(height*height)
         if BMI<18.5:
-            anser.append("あなたは低体重です")
+            degree="あなたは低体重です"
         elif BMI>=18.5 and BMI<25:
-            anser.append("あなたは普通体重です")
-        else:
-            anser.append("あなたは肥満です")
+            degree="あなたは普通体重です"
+        elif BMI>=25:
+            degree="あなたは肥満です"
+        anser=[BMI,degree]
     except:
-        anser.append("Error")
-        anser.append("Error")
+        anser=["Error","Error"]
     return anser

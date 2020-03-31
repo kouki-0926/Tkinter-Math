@@ -6,6 +6,5 @@ def equation(formula):
     try:
         anser= solve(formula, dict = True)
     except:
-        anser=[]
-        anser.append("Error")
+        anser=["Error"]
     return anser

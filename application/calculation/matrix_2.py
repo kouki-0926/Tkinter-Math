@@ -1,32 +1,32 @@
 from sympy import *
 
-def calculation(A,B,Ar,Ac,Br,Bc,e,k,l):
+def calculation(A,B,Ar,Ac,Br,Bc,type,k,l):
     try:
-        if e==0:
+        if type==0:
             anser=A
             type="A"
             anser_r=Ar
             anser_c=Ac
-            
-        elif e==1:
+
+        elif type==1:
             anser=B
             type="B"
             anser_r=Br
             anser_c=Bc
 
-        elif e==2:
+        elif type==2:
             anser=k*A+l*B
             type=str(k)+"A+"+str(l)+"B"
             anser_r=Ar
             anser_c=Ac
 
-        elif e==3:
+        elif type==3:
             anser=A*B
             type="AB"
             anser_r=Ar
             anser_c=Bc
 
-        elif e==4:
+        elif type==4:
             anser=B*A
             type="BA"
             anser_r=Br

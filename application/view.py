@@ -241,7 +241,7 @@ def sub_window_5():
     txt_5_6=tkinter.Entry(root_5,width=3,font=("",25))
     txt_5_6.place(x=1420,y=120)
 
-    lbl_5_1=tkinter.Label(root_5,text="べき乗",font=("",25))
+    lbl_5_1=tkinter.Label(root_5,text="次数",font=("",25))
     lbl_5_1.place(x=790,y=120)
     lbl_5_2=tkinter.Label(root_5,text="x=",font=("",25))
     lbl_5_2.place(x=980,y=120)
@@ -549,7 +549,7 @@ def sub_window_10():
 
 #行列2　test075.py
 def sub_window_11():
-    def calc_11(e):
+    def calc_11(type):
         try:
             Ar=int(txt_11_4.get())
             Ac=int(txt_11_5.get())
@@ -588,7 +588,7 @@ def sub_window_11():
             k=int(txt_11_8.get())
             l=int(txt_11_9.get())
 
-            anser=matrix_2.calculation(A,B,Ar,Ac,Br,Bc,e,k,l)
+            anser=matrix_2.calculation(A,B,Ar,Ac,Br,Bc,type,k,l)
 
             txt_11_10.delete(0,tkinter.END)
             txt_11_10.insert(0,anser[1])

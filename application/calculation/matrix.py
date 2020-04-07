@@ -91,8 +91,10 @@ def calculation(A,Ar,Ac,c):
             type="P^-1AP"
             d=0
     except:
-        A="Error"
-        D="Error"
+        anser="Error"
+        anser_r=Ar
+        anser_c=Ac
+        type="Error"
         d=1
 
     Anser=[anser,anser_r,anser_c,type,d]

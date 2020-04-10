@@ -1,13 +1,13 @@
-import tkinter
 from functools import partial
 from calculation import *
 from sympy import *
+import tkinter
 
 #main_window
 def main_window():
     root=tkinter.Tk()
     root.title(u"math")
-    root.geometry("600x320")
+    root.geometry("600x360")
     root.resizable(False, False)
 
     btn_1=tkinter.Button(root,text="微分",command=sub_window_1,width=20,height=4)
@@ -34,19 +34,25 @@ def main_window():
     btn_11.place(x=300,y=180)
     btn_12=tkinter.Button(root,text="進数変換",command=sub_window_12,width=20,height=4)
     btn_12.place(x=450,y=180)
-    btn_d=tkinter.Button(root,text="mathを閉じる",command=root.destroy,width=84,height=2,bg="#ffa300")
-    btn_d.place(x=0,y=255)
+    btn_13=tkinter.Button(root,text="展開",command=sub_window_13,width=20,height=4)
+    btn_13.place(x=0,y=255)
+    btn_14=tkinter.Button(root,text="素因数分解",command=sub_window_14,width=20,height=4)
+    btn_14.place(x=150,y=255)
+    btn_15=tkinter.Button(root,text="",width=20,height=4)
+    btn_15.place(x=300,y=255)
+    btn_d=tkinter.Button(root,text="mathを閉じる",command=root.destroy,width=20,height=4,bg="#ffa300")
+    btn_d.place(x=450,y=255)
 
     root.mainloop()
 
-#微分   test038.py
+#微分
 def sub_window_1():
     def calc_1():
         try:
             formula=txt_1_1.get()
-            a=txt_1_3.get()
+            type=txt_1_3.get()
 
-            anser=derivative.derivative(formula,a)
+            anser=derivative.derivative(formula,type)
         except:
             anser="Error"
         txt_1_2.delete(0,tkinter.END)
@@ -78,7 +84,7 @@ def sub_window_1():
 
     root_1.mainloop()
 
-#積分　　test046.py
+#積分　
 def sub_window_2():
     def calc_2():
         try:
@@ -127,7 +133,7 @@ def sub_window_2():
 
     root_2.mainloop()
 
-#因数分解　test064.py
+#因数分解　
 def sub_window_3():
     def calc_3():
         try:
@@ -159,7 +165,7 @@ def sub_window_3():
 
     root_3.mainloop()
 
-#方程式　　test044.py
+#方程式　　
 def sub_window_4():
     def calc_4():
         try:
@@ -202,7 +208,7 @@ def sub_window_4():
 
     root_4.mainloop()
 
-#テーラー展開　　test043.py
+#テーラー展開　　
 def sub_window_5():
     def calc_5():
         try:
@@ -242,7 +248,7 @@ def sub_window_5():
     txt_5_6.place(x=1420,y=120)
 
     lbl_5_1=tkinter.Label(root_5,text="次数",font=("",25))
-    lbl_5_1.place(x=790,y=120)
+    lbl_5_1.place(x=800,y=120)
     lbl_5_2=tkinter.Label(root_5,text="x=",font=("",25))
     lbl_5_2.place(x=980,y=120)
     lbl_5_3=tkinter.Label(root_5,text="周り",font=("",25))
@@ -257,7 +263,7 @@ def sub_window_5():
 
     root_5.mainloop()
 
-#階乗     test049.py
+#階乗
 def sub_window_6():
     def calc_6():
         try:
@@ -289,7 +295,7 @@ def sub_window_6():
 
     root_6.mainloop()
 
-#連立方程式　test065.py
+#連立方程式　
 def sub_window_7():
     def sub_window_7_1():
         def calc_7_1():
@@ -366,7 +372,7 @@ def sub_window_7():
 
     sub_window_7_1()
 
-#BMI    test030.py
+#BMI
 def sub_window_8():
     def calc_8():
         try:
@@ -411,7 +417,7 @@ def sub_window_8():
 
     root_8.mainloop()
 
-#極限　　test067.py
+#極限　
 def sub_window_9():
     def calc_9():
         try:
@@ -452,9 +458,9 @@ def sub_window_9():
 
     root_9.mainloop()
 
-#行列　　test074.py
+#行列　　
 def sub_window_10():
-    def calc_10(c):
+    def calc_10(type):
         try:
             Ar=int(txt_10_3.get())
             Ac=int(txt_10_4.get())
@@ -473,21 +479,22 @@ def sub_window_10():
                 LIST.append(list)
             A=Matrix(LIST)
 
-            anser=matrix.calculation(A,Ar,Ac,c)
+            anser=matrix.calculation(A,Ar,Ac,type)
 
             txt_10_5.delete(0,tkinter.END)
             txt_10_5.insert(0,anser[3])
             txt_10_2.delete("0.end",tkinter.END)
-            if anser[4]==0:
+            if anser[4]=="MATRIX":
                 for k in range(0,anser[1],1):
                     B=str(anser[0].row(k))
-                    C=B.replace("Matrix","").replace("**","^").replace("*","").replace("([[","[").replace("]])","]\n")
-                    txt_10_2.insert(f"{k+1}.{0}",C)
-            elif anser[4]==1:
+                    B=B.replace("Matrix","").replace("**","^").replace("*","").replace("([[","[").replace("]])","]\n")
+                    txt_10_2.insert(f"{k+1}.{0}",B)
+            elif anser[4]=="NUMBER":
                 txt_10_2.insert("1.0",anser[0])
         except:
             txt_10_2.delete("0.end",tkinter.END)
             txt_10_2.insert("0.0","Error")
+
     root_10=tkinter.Toplevel()
     root_10.title(u"行列")
     root_10.geometry("1400x500")
@@ -495,27 +502,27 @@ def sub_window_10():
 
     btn_10_1=tkinter.Button(root_10,text="行列を閉じる",width=30,command=root_10.destroy,font=("",15),bg="#ffa300")
     btn_10_1.place(x=1030,y=460)
-    btn_10_2=tkinter.Button(root_10,text="A",command=partial(calc_10,0),width=30,font=("",15))
+    btn_10_2=tkinter.Button(root_10,text="A",command=partial(calc_10,"A"),width=30,font=("",15))
     btn_10_2.place(x=1030,y=20)
-    btn_10_3=tkinter.Button(root_10,text="n乗",command=partial(calc_10,1),width=30,font=("",15))
+    btn_10_3=tkinter.Button(root_10,text="n乗",command=partial(calc_10,"A^n"),width=30,font=("",15))
     btn_10_3.place(x=1030,y=60)
-    btn_10_4=tkinter.Button(root_10,text="転置",command=partial(calc_10,2),width=30,font=("",15))
+    btn_10_4=tkinter.Button(root_10,text="転置",command=partial(calc_10,"A^t"),width=30,font=("",15))
     btn_10_4.place(x=1030,y=100)
-    btn_10_5=tkinter.Button(root_10,text="逆行列",command=partial(calc_10,3),width=30,font=("",15))
+    btn_10_5=tkinter.Button(root_10,text="逆行列",command=partial(calc_10,"A^-1"),width=30,font=("",15))
     btn_10_5.place(x=1030,y=140)
-    btn_10_6=tkinter.Button(root_10,text="余因子行列",command=partial(calc_10,4),width=30,font=("",15))
+    btn_10_6=tkinter.Button(root_10,text="余因子行列",command=partial(calc_10,"A~"),width=30,font=("",15))
     btn_10_6.place(x=1030,y=180)
-    btn_10_7=tkinter.Button(root_10,text="行列式",command=partial(calc_10,5),width=30,font=("",15))
+    btn_10_7=tkinter.Button(root_10,text="行列式",command=partial(calc_10,"det(A)"),width=30,font=("",15))
     btn_10_7.place(x=1030,y=220)
-    btn_10_8=tkinter.Button(root_10,text="階数",command=partial(calc_10,6),width=30,font=("",15))
+    btn_10_8=tkinter.Button(root_10,text="階数",command=partial(calc_10,"rank(A)"),width=30,font=("",15))
     btn_10_8.place(x=1030,y=260)
-    btn_10_9=tkinter.Button(root_10,text="トレース",command=partial(calc_10,7),width=30,font=("",15))
+    btn_10_9=tkinter.Button(root_10,text="トレース",command=partial(calc_10,"tr(A)"),width=30,font=("",15))
     btn_10_9.place(x=1030,y=300)
-    btn_10_10=tkinter.Button(root_10,text="固有値",command=partial(calc_10,8),width=30,font=("",15))
+    btn_10_10=tkinter.Button(root_10,text="固有値",command=partial(calc_10,"λ"),width=30,font=("",15))
     btn_10_10.place(x=1030,y=340)
-    btn_10_11=tkinter.Button(root_10,text="対角化行列",command=partial(calc_10,9),width=30,font=("",15))
+    btn_10_11=tkinter.Button(root_10,text="対角化行列",command=partial(calc_10,"P"),width=30,font=("",15))
     btn_10_11.place(x=1030,y=380)
-    btn_10_12=tkinter.Button(root_10,text="対角行列",command=partial(calc_10,10),width=30,font=("",15))
+    btn_10_12=tkinter.Button(root_10,text="対角行列",command=partial(calc_10,"P^-1AP"),width=30,font=("",15))
     btn_10_12.place(x=1030,y=420)
 
     lbl_10_1=tkinter.Label(root_10,text="A:",font=("",20))
@@ -547,7 +554,7 @@ def sub_window_10():
 
     root_10.mainloop()
 
-#行列2　test075.py
+#行列2
 def sub_window_11():
     def calc_11(type):
         try:
@@ -595,8 +602,8 @@ def sub_window_11():
             txt_11_3.delete("0.end",tkinter.END)
             for k in range(0,anser[2],1):
                 B=str(anser[0].row(k))
-                C=B.replace("Matrix","").replace("**","^").replace("*","").replace("([[","[").replace("]])","]\n")
-                txt_11_3.insert(f"{k+1}.{0}",C)
+                B=B.replace("Matrix","").replace("**","^").replace("*","").replace("([[","[").replace("]])","]\n")
+                txt_11_3.insert(f"{k+1}.{0}",B)
         except:
             txt_11_3.delete("0.end",tkinter.END)
             txt_11_3.insert("0.0","Error")
@@ -609,15 +616,15 @@ def sub_window_11():
 
     btn_11_1=tkinter.Button(root_11,text="行列2を閉じる",width=30,command=root_11.destroy,font=("",15),bg="#ffa300")
     btn_11_1.place(x=1030,y=460)
-    btn_11_2=tkinter.Button(root_11,text="A",command=partial(calc_11,0),width=30,font=("",15))
+    btn_11_2=tkinter.Button(root_11,text="A",command=partial(calc_11,"A"),width=30,font=("",15))
     btn_11_2.place(x=1030,y=260)
-    btn_11_3=tkinter.Button(root_11,text="B",command=partial(calc_11,1),width=30,font=("",15))
+    btn_11_3=tkinter.Button(root_11,text="B",command=partial(calc_11,"B"),width=30,font=("",15))
     btn_11_3.place(x=1030,y=300)
-    btn_11_4=tkinter.Button(root_11,text="kA+lB",command=partial(calc_11,2),width=30,font=("",15))
+    btn_11_4=tkinter.Button(root_11,text="kA+lB",command=partial(calc_11,"kA+lB"),width=30,font=("",15))
     btn_11_4.place(x=1030,y=340)
-    btn_11_5=tkinter.Button(root_11,text="AB",command=partial(calc_11,3),width=30,font=("",15))
+    btn_11_5=tkinter.Button(root_11,text="AB",command=partial(calc_11,"AB"),width=30,font=("",15))
     btn_11_5.place(x=1030,y=380)
-    btn_11_6=tkinter.Button(root_11,text="BA",command=partial(calc_11,4),width=30,font=("",15))
+    btn_11_6=tkinter.Button(root_11,text="BA",command=partial(calc_11,"BA"),width=30,font=("",15))
     btn_11_6.place(x=1030,y=420)
 
     lbl_11_1=tkinter.Label(root_11,text="A:",font=("",20))
@@ -675,70 +682,131 @@ def sub_window_11():
 
     root_11.mainloop()
 
-#進数変換　test078.py
+#進数変換　
 def sub_window_12():
     def calc_12():
         try:
-            if txt_1.get()!="":
+            if txt_12_1.get()!="":
                 base="binary"
-                before_conversion=txt_1.get()
-            elif txt_2.get()!="":
+                before_conversion=txt_12_1.get()
+            elif txt_12_2.get()!="":
                 base="octal"
-                before_conversion=txt_2.get()
-            elif txt_3.get()!="":
+                before_conversion=txt_12_2.get()
+            elif txt_12_3.get()!="":
                 base="decimal"
-                before_conversion=txt_3.get()
-            elif txt_4.get()!="":
+                before_conversion=txt_12_3.get()
+            elif txt_12_4.get()!="":
                 base="hexadecimal"
-                before_conversion=txt_4.get()
+                before_conversion=txt_12_4.get()
 
             anser=base_conversion.base_conversion(base,before_conversion)
         except:
             anser=["Error","Error","Error","Error"]
 
-        txt_1.delete(0,tkinter.END)
-        txt_1.insert(0,anser[0])
-        txt_2.delete(0,tkinter.END)
-        txt_2.insert(0,anser[1])
-        txt_3.delete(0,tkinter.END)
-        txt_3.insert(0,anser[2])
-        txt_4.delete(0,tkinter.END)
-        txt_4.insert(0,anser[3])
+        dele()
+        txt_12_1.insert(0,anser[0])
+        txt_12_2.insert(0,anser[1])
+        txt_12_3.insert(0,anser[2])
+        txt_12_4.insert(0,anser[3])
 
     def dele():
-        txt_1.delete(0,tkinter.END)
-        txt_2.delete(0,tkinter.END)
-        txt_3.delete(0,tkinter.END)
-        txt_4.delete(0,tkinter.END)
+        txt_12_1.delete(0,tkinter.END)
+        txt_12_2.delete(0,tkinter.END)
+        txt_12_3.delete(0,tkinter.END)
+        txt_12_4.delete(0,tkinter.END)
 
     root_12=tkinter.Toplevel()
     root_12.title(u"進数変換")
     root_12.geometry("430x330")
     root_12.resizable(False, False)
 
-    btn_1=tkinter.Button(root_12,text="進数変換を閉じる",width=34,command=root_12.destroy,font=("",15),bg="#ffa300")
-    btn_1.place(x=20,y=270)
-    btn_2=tkinter.Button(root_12,text="計算",command=calc_12,width=34,font=("",15))
-    btn_2.place(x=20,y=180)
-    btn_3=tkinter.Button(root_12,text="全削除",command=dele,width=34,font=("",15))
-    btn_3.place(x=20,y=220)
+    btn_12_1=tkinter.Button(root_12,text="進数変換を閉じる",width=34,command=root_12.destroy,font=("",15),bg="#ffa300")
+    btn_12_1.place(x=20,y=270)
+    btn_12_2=tkinter.Button(root_12,text="計算",command=calc_12,width=34,font=("",15))
+    btn_12_2.place(x=20,y=180)
+    btn_12_3=tkinter.Button(root_12,text="全削除",command=dele,width=34,font=("",15))
+    btn_12_3.place(x=20,y=220)
 
-    lbl_1=tkinter.Label(root_12,text="２進数",font=("",20))
-    lbl_1.place(x=20,y=20)
-    lbl_2=tkinter.Label(root_12,text="８進数",font=("",20))
-    lbl_2.place(x=20,y=60)
-    lbl_3=tkinter.Label(root_12,text="１０進数",font=("",20))
-    lbl_3.place(x=10,y=100)
-    lbl_4=tkinter.Label(root_12,text="１６進数",font=("",20))
-    lbl_4.place(x=10,y=140)
+    lbl_12_1=tkinter.Label(root_12,text="２進数",font=("",20))
+    lbl_12_1.place(x=20,y=20)
+    lbl_12_2=tkinter.Label(root_12,text="８進数",font=("",20))
+    lbl_12_2.place(x=20,y=60)
+    lbl_12_3=tkinter.Label(root_12,text="１０進数",font=("",20))
+    lbl_12_3.place(x=10,y=100)
+    lbl_12_4=tkinter.Label(root_12,text="１６進数",font=("",20))
+    lbl_12_4.place(x=10,y=140)
 
-    txt_1=tkinter.Entry(root_12,font=("",20))
-    txt_1.place(x=120,y=20)
-    txt_2=tkinter.Entry(root_12,font=("",20))
-    txt_2.place(x=120,y=60)
-    txt_3=tkinter.Entry(root_12,font=("",20))
-    txt_3.place(x=120,y=100)
-    txt_4=tkinter.Entry(root_12,font=("",20))
-    txt_4.place(x=120,y=140)
+    txt_12_1=tkinter.Entry(root_12,font=("",20))
+    txt_12_1.place(x=120,y=20)
+    txt_12_2=tkinter.Entry(root_12,font=("",20))
+    txt_12_2.place(x=120,y=60)
+    txt_12_3=tkinter.Entry(root_12,font=("",20))
+    txt_12_3.place(x=120,y=100)
+    txt_12_4=tkinter.Entry(root_12,font=("",20))
+    txt_12_4.place(x=120,y=140)
 
     root_12.mainloop()
+
+#展開　
+def sub_window_13():
+    def calc_13():
+        try:
+            formula=txt_13_1.get()
+
+            anser=Expand.Expand(formula)
+        except:
+            anser="Error"
+        txt_13_2.delete(0,tkinter.END)
+        txt_13_2.insert(0,anser)
+
+    root_13=tkinter.Toplevel()
+    root_13.title(u"展開")
+    root_13.geometry("1000x300")
+    root_13.resizable(False, False)
+
+    btn_13_1=tkinter.Button(root_13,text="計算",command=calc_13,width=40,height=3)
+    btn_13_1.place(x=330,y=110)
+    btn_13_2=tkinter.Button(root_13,text="展開を閉じる",command=root_13.destroy,width=40,height=2,bg="#ffa300")
+    btn_13_2.place(x=330,y=240)
+
+    txt_13_1=tkinter.Entry(root_13,width=40,font=("",30))
+    txt_13_1.place(x=70,y=50)
+    txt_13_2=tkinter.Entry(root_13,width=40,font=("",30))
+    txt_13_2.place(x=70,y=180)
+
+    lbl_13_1=tkinter.Label(root_13,text="展開したい式を入力してください",font=("",15))
+    lbl_13_1.place(x=330,y=20)
+
+    root_13.mainloop()
+
+#素因数分解
+def sub_window_14():
+    def calc_14():
+        try:
+            formula=txt_14_1.get()
+
+            anser=prime_factorization.prime_factorization(formula)
+        except:
+            anser="Error"
+        txt_14_2.delete(0,tkinter.END)
+        txt_14_2.insert(0,anser)
+
+    root_14=tkinter.Toplevel()
+    root_14.title(u"素因数分解")
+    root_14.geometry("1000x300")
+    root_14.resizable(False, False)
+
+    btn_14_1=tkinter.Button(root_14,text="計算",command=calc_14,width=40,height=3)
+    btn_14_1.place(x=330,y=110)
+    btn_14_2=tkinter.Button(root_14,text="素因数分解を閉じる",command=root_14.destroy,width=40,height=2,bg="#ffa300")
+    btn_14_2.place(x=330,y=240)
+
+    txt_14_1=tkinter.Entry(root_14,width=40,font=("",30))
+    txt_14_1.place(x=70,y=50)
+    txt_14_2=tkinter.Entry(root_14,width=40,font=("",30))
+    txt_14_2.place(x=70,y=180)
+
+    lbl_14_1=tkinter.Label(root_14,text="整数を入力してください",font=("",15))
+    lbl_14_1.place(x=330,y=20)
+
+    root_14.mainloop()

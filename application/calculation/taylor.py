@@ -4,8 +4,7 @@ x = Symbol('x')
 
 def taylor(formula,dimension,center,type,d):
     try:
-        f=integrate(formula)
-        f=diff(f)
+        f=sympify(formula)
 
         A=f.subs(x,center)
         for number in range(1,dimension+1,1):
@@ -23,9 +22,14 @@ def taylor(formula,dimension,center,type,d):
 
             A=D*(x-center)**number+A
 
+        formula=str(formula)
         A=str(A)
-        anser=str(formula)+"≒"+str(A.replace("**","B").replace("*","").replace("B","^"))
-        anser_2=str(formula)+"≒"+str(A)
+        anser_2=formula+"≒"+A
+
+        formula=formula.replace("**","B").replace("*","").replace("B","^")
+        A=A.replace("**","B").replace("*","").replace("B","^")
+        anser=formula+"≒"+A
+
         print("------------------------------------------------------------------------------------------------------------------------")
         print(anser)
         print("")

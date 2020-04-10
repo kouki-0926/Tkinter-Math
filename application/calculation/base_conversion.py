@@ -11,15 +11,15 @@ def base_conversion(base,before_conversion):
             dec = int(oct,8)
             hex = format(int(oct,8),"x")
         elif base=="decimal":
-            dec = int(before_conversion)
-            bin = format(dec, 'b')
-            oct = format(dec, 'o')
-            hex = format(dec, 'x')
+            dec = before_conversion
+            bin = format(int(dec), 'b')
+            oct = format(int(dec), 'o')
+            hex = format(int(dec), 'x')
         elif base=="hexadecimal":
             hex = before_conversion
             bin = format(int(hex,16),"b")
             oct = format(int(hex,16),"o")
-            dec = int(oct,16)
+            dec = int(hex,16)
         anser=[bin,oct,dec,hex]
     except:
         anser=["Error","Error","Error","Error"]

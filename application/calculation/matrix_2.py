@@ -2,41 +2,36 @@ from sympy import *
 
 def calculation(A,B,Ar,Ac,Br,Bc,type,k,l):
     try:
-        if type==0:
+        if type=="A":
             anser=A
-            type="A"
             anser_r=Ar
             anser_c=Ac
 
-        elif type==1:
+        elif type=="B":
             anser=B
-            type="B"
             anser_r=Br
             anser_c=Bc
 
-        elif type==2:
+        elif type=="kA+lB":
             anser=k*A+l*B
             type=str(k)+"A+"+str(l)+"B"
             anser_r=Ar
             anser_c=Ac
 
-        elif type==3:
+        elif type=="AB":
             anser=A*B
-            type="AB"
             anser_r=Ar
             anser_c=Bc
 
-        elif type==4:
+        elif type=="BA":
             anser=B*A
-            type="BA"
             anser_r=Br
             anser_c=Ac
-
     except:
-        anser=None
-        type="Error"
-        g=None
-        h=None
+        anser="Error"
+        type=""
+        anser_r=""
+        anser_c=""
     Anser=[anser,type,anser_r,anser_c]
 
     return Anser

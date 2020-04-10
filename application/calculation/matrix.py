@@ -1,102 +1,90 @@
 from sympy import *
 
-def calculation(A,Ar,Ac,c):
+def calculation(A,Ar,Ac,type):
     try:
-        Anser=[]
-        if c==0:
+        if type=="A":
             anser=A
             anser_r=Ar
             anser_c=Ac
-            type="A"
-            d=0
+            insert_type="MATRIX"
 
-        elif c==1:
+        elif type=="A^n":
             A=A.diagonalize()
             A=list(A)
             P=A[0]
-            A=A[1]
-            for i in range(0,Ac,1):
-                A[i,i]="("+str(A[i,i])+")^n"
-            anser=P*A*P.inv()
+            D=A[1]
+            for i in range(Ac):
+                D[i,i]="("+str(D[i,i])+")^n"
+            anser=P*D*P.inv()
             anser_r=Ar
             anser_c=Ac
-            type="A^n"
-            d=0
+            insert_type="MATRIX"
 
-        elif c==2:
+        elif type=="A^t":
             anser=A.transpose()
             anser_r=Ac
             anser_c=Ar
-            type="A^t"
-            d=0
+            insert_type="MATRIX"
 
-        elif c==3:
+        elif type=="A^-1":
             anser=A.inv()
             anser_r=Ar
             anser_c=Ac
-            type="A^-1"
-            d=0
+            insert_type="MATRIX"
 
-        elif c==4:
+        elif type=="A~":
             anser=A.adjugate()
             anser_r=Ar
             anser_c=Ac
-            type="A~"
-            d=0
+            insert_type="MATRIX"
 
-        elif c==5:
+        elif type=="det(A)":
             anser=A.det()
-            anser_r=Ar
-            anser_c=Ac
-            type="det(A)"
-            d=1
+            anser_r=""
+            anser_c=""
+            insert_type="NUMBER"
 
-        elif c==6:
+        elif type=="rank(A)":
             anser=A.rank()
-            anser_r=Ar
-            anser_c=Ac
-            type="rank(A)"
-            d=1
+            anser_r=""
+            anser_c=""
+            insert_type="NUMBER"
 
-        elif c==7:
+        elif type=="tr(A)":
             anser=A.trace()
-            anser_r=Ar
-            anser_c=Ac
-            type="tr(A)"
-            d=1
+            anser_r=""
+            anser_c=""
+            insert_type="NUMBER"
 
-        elif c==8:
+        elif type=="λ":
             A=A.eigenvals()
             anser=list(A)
-            anser_r=Ar
-            anser_c=Ac
-            type="λ"
-            d=1
+            anser_r=""
+            anser_c=""
+            insert_type="NUMBER"
 
-        elif c==9:
+        elif type=="P":
             A=A.diagonalize()
             A=list(A)
             anser=A[0]
             anser_r=Ar
             anser_c=Ac
-            type="P"
-            d=0
+            insert_type="MATRIX"
 
-        elif c==10:
+        elif type=="P^-1AP":
             A=A.diagonalize()
             A=list(A)
             anser=A[1]
             anser_r=Ar
             anser_c=Ac
-            type="P^-1AP"
-            d=0
+            insert_type="MATRIX"
     except:
         anser="Error"
-        anser_r=Ar
-        anser_c=Ac
+        anser_r=""
+        anser_c=""
         type="Error"
-        d=1
+        insert_type="NUMBER"
 
-    Anser=[anser,anser_r,anser_c,type,d]
+    Anser=[anser,anser_r,anser_c,type,insert_type]
 
     return Anser

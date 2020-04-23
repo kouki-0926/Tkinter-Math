@@ -1,12 +1,12 @@
-# TKINTER MATH     ver.1.6
+# TKINTER MATH     ver.1.8
 
 ## 利用方法
 
-### 1.  下の[URL](https://github.com/kouki7910/math/archive/v1.6.zip)からコードをダウンロード、展開する
-        https://github.com/kouki7910/math/archive/v1.6.zip
+### 1.  下の[URL](https://github.com/kouki7910/math/archive/v1.8.zip)からコードをダウンロード、展開する
+        https://github.com/kouki7910/math/archive/v1.8.zip
 
 ### 2. コマンドプロンプトを開き、applicationフォルダに移動する
-        cd Downloads\math-1.6\math-1.6\application
+        cd Downloads\math-1.8\math-1.8\application
 
 ### 3. pipenvをインストールする
         pip install pipenv

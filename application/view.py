@@ -51,7 +51,6 @@ def sub_window_1():
         try:
             formula=txt_1_1.get()
             type=txt_1_3.get()
-
             anser=derivative.derivative(formula,type)
         except:
             anser="Error"
@@ -168,12 +167,13 @@ def sub_window_3():
 #方程式　　
 def sub_window_4():
     def calc_4():
-        try:
-            formula=txt_4_1.get()
-
-            anser=equation.equation(formula)
-        except:
-            anser=["Error"]
+        # try:
+        #     formula=txt_4_1.get()
+        #     anser=equation.equation(formula)
+        # except:
+        #     anser=["Error"]
+        formula=txt_4_1.get()
+        anser=equation.equation(formula)
         listbox.delete(0,tkinter.END)
         for i in range(0,len(anser),1):
             listbox.insert(tkinter.END,anser[i])
@@ -215,10 +215,8 @@ def sub_window_5():
             formula=txt_5_1.get()
             dimension=int(txt_5_3.get())
             center=float(txt_5_4.get())
-            type=int(txt_5_6.get())
-            d=float(txt_5_5.get())
 
-            anser=taylor.taylor(formula,dimension,center,type,d)
+            anser=taylor.taylor(formula,dimension,center)
         except:
             anser="Error"
         txt_5_2.delete("1.0",tkinter.END)
@@ -333,12 +331,13 @@ def sub_window_7():
 
                 anser=equations.equations(formura)
             except:
-                anser="Error"
-            txt_7_2_a.delete(0,tkinter.END)
-            txt_7_2_a.insert(0,anser)
+                anser=["Error"]
+            listbox.delete(0,tkinter.END)
+            for i in range(0,len(anser),1):
+                listbox.insert(tkinter.END,anser[i])
 
         width=1000
-        height=a*40+230
+        height=a*40+550
         root_7_2=tkinter.Toplevel()
         root_7_2.title(u"連立方程式")
         root_7_2.geometry(f"{width}x{height}")
@@ -347,7 +346,7 @@ def sub_window_7():
         btn_7_2_1=tkinter.Button(root_7_2,text="計算",width=20,command=calc_7_2,font=("",20))
         btn_7_2_1.place(x=380,y=a*45+45)
         btn_7_2_2=tkinter.Button(root_7_2,text="連立方程式を閉じる",width=20,command=root_7_2.destroy,font=("",20),bg="#ffa300")
-        btn_7_2_2.place(x=380,y=a*45+150)
+        btn_7_2_2.place(x=380,y=a*45+450)
 
         lbl_7_2_1=[]
         lbl_7_2_2=[]
@@ -358,15 +357,20 @@ def sub_window_7():
             lbl_7_2_2[i].place(x=930,y=i*45+30)
 
         lbl_7_2_a=tkinter.Label(root_7_2,text="解",font=("",30))
-        lbl_7_2_a.place(x=10,y=a*45+100)
+        lbl_7_2_a.place(x=10,y=a*45+250)
 
         txt_7_2_1=[]
         for i in range(0,int(a),1):
             txt_7_2_1.append(tkinter.Entry(root_7_2,width=42,font=("",30)))
             txt_7_2_1[i].place(x=80,y=i*45+30)
 
-        txt_7_2_a=tkinter.Entry(root_7_2,width=42,font=("",30))
-        txt_7_2_a.place(x=80,y=a*45+100)
+        scrollbar_frame = tkinter.Frame(root_7_2)
+        scrollbar_frame.grid(padx=80, pady=a*45+100)
+        listbox = tkinter.Listbox(scrollbar_frame,height=8,width=42,font=("",30))
+        listbox.pack(side=tkinter.LEFT)
+        yscroll_bar =tkinter.Scrollbar(scrollbar_frame, command=listbox.yview)
+        yscroll_bar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        listbox.config(yscrollcommand=yscroll_bar.set)
 
         root_7_2.mainloop()
 
@@ -376,9 +380,8 @@ def sub_window_7():
 def sub_window_8():
     def calc_8():
         try:
-            height=float(txt_8_1.get())
-            weight=float(txt_8_2.get())
-
+            height=txt_8_1.get()
+            weight=txt_8_2.get()
             anser=BMI.BMI(height,weight)
         except:
             anser=["Error","Error"]
@@ -698,11 +701,9 @@ def sub_window_12():
             elif txt_12_4.get()!="":
                 base="hexadecimal"
                 before_conversion=txt_12_4.get()
-
             anser=base_conversion.base_conversion(base,before_conversion)
         except:
             anser=["Error","Error","Error","Error"]
-
         dele()
         txt_12_1.insert(0,anser[0])
         txt_12_2.insert(0,anser[1])

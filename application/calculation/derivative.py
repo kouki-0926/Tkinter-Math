@@ -1,4 +1,5 @@
 from sympy import *
+from calculation.common.STR import STR
 
 x = Symbol('x')
 y = Symbol('y')
@@ -17,9 +18,7 @@ def derivative(formula,type):
             A = diff(formula,y,x)
         elif type=="yy":
             A = diff(formula,y,y)
-
-        A=str(A)
-        anser=A.replace("**","A").replace("*","").replace("A","^")
+        anser=STR(A)
     except:
         anser="Error"
     return anser

@@ -1,40 +1,23 @@
-from sympy import*
+from sympy import *
+from calculation.common.STR import STR
 
 x = Symbol('x')
 
-def taylor(formula,dimension,center,type,d):
+def taylor(formula,dimension,center):
     try:
         f=sympify(formula)
+        center=float(center)
 
         A=f.subs(x,center)
-        for number in range(1,dimension+1,1):
+        for number in range(1,int(dimension)+1,1):
             f=diff(f)
             D=f.subs(x,center)/factorial(number)
-
-            if type==1:
-                D=D
-            else:
-                d=10**(-d)
-                if abs(D)<d:
-                    D=0
-                else:
-                    D=D
-
             A=D*(x-center)**number+A
 
-        formula=str(formula)
-        A=str(A)
-        anser_2=formula+"≒"+A
-
-        formula=formula.replace("**","B").replace("*","").replace("B","^")
-        A=A.replace("**","B").replace("*","").replace("B","^")
-        anser=formula+"≒"+A
-
+        anser=STR(formula)+"≒"+STR(A)
+        anser_2=str(formula)+"≒"+str(A)
         print("------------------------------------------------------------------------------------------------------------------------")
-        print(anser)
-        print("")
-        print(anser_2)
-        print("")
+        print(anser+"\n\n"+anser_2+"\n")
     except:
         anser="Error"
         print("Error")

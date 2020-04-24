@@ -1,4 +1,5 @@
 from sympy import *
+from tkinter_math.calculation.common.STR import STR
 
 x = Symbol('x')
 y = Symbol('y')
@@ -10,20 +11,14 @@ def derivative(formula,type):
         elif type=="y":
             A = diff(formula,y)
         elif type=="xx":
-            f = diff(formula,x)
-            A = diff(f,x)
+            A = diff(formula,x,x)
         elif type=="xy":
-            f = diff(formula,x)
-            A = diff(f,y)
+            A = diff(formula,x,y)
         elif type=="yx":
-            f = diff(formula,y)
-            A = diff(f,x)
+            A = diff(formula,y,x)
         elif type=="yy":
-            f = diff(formula,y)
-            A = diff(f,y)
-
-        A=str(A)
-        anser=A.replace("**","A").replace("*","").replace("A","^")
+            A = diff(formula,y,y)
+        anser=STR(A)
     except:
         anser="Error"
     return anser

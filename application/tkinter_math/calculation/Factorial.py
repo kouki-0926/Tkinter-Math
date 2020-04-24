@@ -4,5 +4,5 @@ def Factorial(formula):
     try:
         anser=math.factorial(formula)
     except:
-        anser="Error"    
+        anser="Error"
     return anser

@@ -1,4 +1,5 @@
 from sympy import *
+from tkinter_math.calculation.common.STR import STR
 
 x = Symbol('x')
 
@@ -8,12 +9,11 @@ def integral(formula,upper_end,lower_end,type):
         A=g.subs(x,upper_end)-g.subs(x,lower_end)
 
         if type==0:
-            anser=A
+            anser=str(A)
         elif type==1:
-            anser=A.evalf()
+            anser=str(A.evalf())
         elif type==2:
-            g=str(g)
-            anser=g.replace("**","A").replace("*","").replace("A","^")
+            anser=STR(g)+"+C"
     except:
         anser="Error"
     return anser

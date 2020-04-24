@@ -1,6 +1,7 @@
 from . import BMI
 from . import lim
 from . import taylor
+from . import Expand
 from . import matrix
 from . import matrix_2
 from . import integral
@@ -9,4 +10,8 @@ from . import equations
 from . import Factorial
 from . import derivative
 from . import factorization
+from . import newton_method
 from . import base_conversion
+from . import prime_factorization
+from . import Euclidean_Algorithm
+from . import Sieve_of_Eratosthenes

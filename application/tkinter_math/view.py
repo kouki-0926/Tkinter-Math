@@ -1,5 +1,5 @@
 from functools import partial
-from calculation import *
+from tkinter_math.calculation import *
 from sympy import *
 import tkinter
 

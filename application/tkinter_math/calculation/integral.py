@@ -1,5 +1,5 @@
 from sympy import *
-from calculation.common.STR import STR
+from tkinter_math.calculation.common.STR import STR
 
 x = Symbol('x')
 

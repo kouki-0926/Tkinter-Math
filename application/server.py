@@ -1,3 +1,3 @@
-from view import main_window
+from tkinter_math.view import main_window
 
 main_window()

@@ -1,4 +1,4 @@
-from calculation.common.NEWTON_METHOD import NEWTON_METHOD
+from tkinter_math.calculation.common.NEWTON_METHOD import NEWTON_METHOD
 
 def Sieve_of_Eratosthenes(N):
     try:

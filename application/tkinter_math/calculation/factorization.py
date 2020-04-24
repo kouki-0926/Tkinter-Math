@@ -1,9 +1,9 @@
 from sympy import *
-from calculation.common.STR import STR
+from tkinter_math.calculation.common.STR import STR
 
-def Expand(formula):
+def factorization(formula):
     try:
-        A=expand(formula)
+        A=factor(formula)
         anser=STR(formula)+" = "+STR(A)
     except:
         anser="Error"

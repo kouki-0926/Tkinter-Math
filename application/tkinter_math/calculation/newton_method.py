@@ -3,11 +3,9 @@ from tkinter_math.calculation.common.NEWTON_METHOD import NEWTON_METHOD
 def newton_method(number):
     try:
         if float(number)>0:
-            anser="="+str(NEWTON_METHOD(number))
-            Anser=[number,anser]
+            anser=str(NEWTON_METHOD(number))
         else:
-            Anser=["Error",""]
-            flash("エラー：正の数を入力してください")
+            anser="Error"
     except:
-        Anser=["Error",""]
-    return Anser
+        anser="Error"
+    return anser

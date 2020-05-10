@@ -1,3 +1,45 @@
-from tkinter_math.view import main_window
+import tkinter
+from tkinter_math.views import *
+
+def main_window():
+    root=tkinter.Tk()
+    root.title(u"math")
+    root.geometry("600x360")
+    root.resizable(False, False)
+
+    btn_1=tkinter.Button(root,text="微分",command=sub_window_1.sub_window_1,width=20,height=4)
+    btn_1.place(x=0,y=30)
+    btn_2=tkinter.Button(root,text="積分",command=sub_window_2.sub_window_2,width=20,height=4)
+    btn_2.place(x=150,y=30)
+    btn_3=tkinter.Button(root,text="因数分解",command=sub_window_3.sub_window_3,width=20,height=4)
+    btn_3.place(x=300,y=30)
+    btn_4=tkinter.Button(root,text="方程式",command=sub_window_4.sub_window_4,width=20,height=4)
+    btn_4.place(x=450,y=30)
+    btn_5=tkinter.Button(root,text="テーラー展開",command=sub_window_5.sub_window_5,width=20,height=4)
+    btn_5.place(x=0,y=105)
+    btn_6=tkinter.Button(root,text="階乗",command=sub_window_6.sub_window_6,width=20,height=4)
+    btn_6.place(x=150,y=105)
+    btn_7=tkinter.Button(root,text="連立方程式",command=sub_window_7.sub_window_7,width=20,height=4)
+    btn_7.place(x=300,y=105)
+    btn_8=tkinter.Button(root,text="BMI",command=sub_window_8.sub_window_8,width=20,height=4)
+    btn_8.place(x=450,y=105)
+    btn_9=tkinter.Button(root,text="極限",command=sub_window_9.sub_window_9,width=20,height=4)
+    btn_9.place(x=0,y=180)
+    btn_10=tkinter.Button(root,text="行列",command=sub_window_10.sub_window_10,width=20,height=4)
+    btn_10.place(x=150,y=180)
+    btn_11=tkinter.Button(root,text="行列２",command=sub_window_11.sub_window_11,width=20,height=4)
+    btn_11.place(x=300,y=180)
+    btn_12=tkinter.Button(root,text="進数変換",command=sub_window_12.sub_window_12,width=20,height=4)
+    btn_12.place(x=450,y=180)
+    btn_13=tkinter.Button(root,text="展開",command=sub_window_13.sub_window_13,width=20,height=4)
+    btn_13.place(x=0,y=255)
+    btn_14=tkinter.Button(root,text="素因数分解",command=sub_window_14.sub_window_14,width=20,height=4)
+    btn_14.place(x=150,y=255)
+    btn_15=tkinter.Button(root,text="",width=20,height=4)
+    btn_15.place(x=300,y=255)
+    btn_d=tkinter.Button(root,text="mathを閉じる",command=root.destroy,width=20,height=4,bg="#ffa300")
+    btn_d.place(x=450,y=255)
+
+    root.mainloop()
 
 main_window()

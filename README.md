@@ -1,24 +1,18 @@
-# TKINTER MATH     ver.1.8
+# TKINTER MATH  ver.1.8
 
-## 利用方法
+## TKINTER MATH is an application that can perform various calculations such as calculus and matrix.
 
-### 1.  下の[URL](https://github.com/kouki7910/math/archive/v1.8.zip)からコードをダウンロード、展開する
-        https://github.com/kouki7910/math/archive/v1.8.zip
+[![Github issues](https://img.shields.io/github/issues/kouki-0926/Tkinter-Math)](https://github.com/kouki-0926/Tkinter-Math/issues)
+[![Github forks](https://img.shields.io/github/forks/kouki-0926/Tkinter-Math)](https://github.com/kouki-0926/Tkinter-Math/network/members)
+[![Github stars](https://img.shields.io/github/stars/kouki-0926/Tkinter-Math)](https://github.com/kouki-0926/Tkinter-Math/stargazers)
+[![Github license](https://img.shields.io/github/license/kouki-0926/Tkinter-Math)](https://github.com/kouki-0926/Tkinter-Math/)
 
-### 2. コマンドプロンプトを開き、applicationフォルダに移動する
-        cd Downloads\math-1.8\math-1.8\application
+## How to use
+1. Make sure you have python3.8.x installed.
+1. Download the source code from [TKINTER MATH ver.1.8](https://github.com/kouki7910/math/archive/v1.8.zip) and unzip it.
+1. If you have not installed the sympy, functools and matplotlib libraries, install them.
+1. Run server.py. The server.py file is located at Tkinter-Math-1.8\Tkinter-Math-1.8\application
 
-### 3. pipenvをインストールする
-        pip install pipenv
+## Contributors
 
-### 4. 仮想環境に入る
-        pipenv --three
-        pipenv shell
-
-### 5. パッケージ,ライブラリをインストールする
-        pipenv install tkinter
-        pipenv install sympy
-        pipenv install functools
-
-### 6. アプリケーションを立ち上げる
-        python server.py
+- [kouki-0926](https://github.com/kouki-0926)
